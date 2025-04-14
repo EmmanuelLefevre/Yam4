@@ -36,11 +36,6 @@ React Native provides a socket-io compatible WebSocket implementation, some peop
 
 
 
-
-
-```bash
-npx expo install @expo/metro-runtime
-```
 ## SERVEURS
 Frontend
 ```bash
