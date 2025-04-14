@@ -25,10 +25,10 @@ export default function OnlineGameController() {
     });
 
     socket.on('game.start', (data) => {
-        console.log('[listen][game.start]:', data);
-        setInQueue(data['inQueue']);
-        setInGame(data['inGame']);
-        setIdOpponent(data['idOpponent']);
+      console.log('[listen][game.start]:', data);
+      setInQueue(data['inQueue']);
+      setInGame(data['inGame']);
+      setIdOpponent(data['idOpponent']);
     });
   }, []);
 
