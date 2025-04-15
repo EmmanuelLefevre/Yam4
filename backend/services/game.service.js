@@ -31,7 +31,7 @@ const GameService = {
       viewQueueState: () => {
         return {
           inQueue: true,
-          inGame: false
+          inGame: false,
         };
       },
 
