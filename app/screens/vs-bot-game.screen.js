@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Button, Text } from "react-native";
 
 import { SocketContext } from '../contexts/socket.context';
 
-import OnlineGameController from "../controllers/online-game.controller";
 
-
-export default function OnlineGameComponent({ navigation }) {
+export default function VsBotGameScreen({ navigation }) {
 
   const socket = useContext(SocketContext);
 
@@ -24,7 +22,18 @@ export default function OnlineGameComponent({ navigation }) {
       )}
 
       {socket && (
-        <OnlineGameController navigation={ navigation } />
+        <>
+          <Text style={styles.paragraph}>
+            VsBot Game Interface
+          </Text>
+          <Text style={styles.footnote}>
+            My socket id is: {socket.id}
+          </Text>
+          <Button
+            title="Revenir au menu"
+            onPress={() => navigation.navigate('HomeScreen')}
+          />
+        </>
       )}
     </View>
   );

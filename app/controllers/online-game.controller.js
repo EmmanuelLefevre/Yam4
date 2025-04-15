@@ -28,7 +28,7 @@ export default function OnlineGameController() {
       console.log('[listen][queue.left]:', data);
       setInQueue(data['inQueue']);
       setInGame(data['inQueue']);
-      navigation.navigate("HomeComponent");
+      navigation.navigate("HomeScreen");
     });
 
     socket.on('game.start', (data) => {

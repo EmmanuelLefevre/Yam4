@@ -5,9 +5,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { SocketContext, socket } from './app/contexts/socket.context';
 
-import HomeComponent from './app/components/home.component';
-import OnlineGameComponent from './app/components/online-game.component';
-import VsBotGameComponent from './app/components/vs-bot-game.component';
+import HomeScreen from './app/screens/home.screen';
+import OnlineGameScreen from './app/screens/online-game.screen';
+import VsBotGameScreen from './app/screens/vs-bot-game.screen';
 
 
 const Stack = createStackNavigator();
@@ -17,10 +17,10 @@ function App() {
   return (
     <SocketContext.Provider value={ socket }>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="HomeComponent">
-          <Stack.Screen name="HomeComponent" component={ HomeComponent } />
-          <Stack.Screen name="OnlineGameComponent" component={ OnlineGameComponent } />
-          <Stack.Screen name="VsBotGameComponent" component={ VsBotGameComponent } />
+        <Stack.Navigator initialRouteName="HomeScreen">
+          <Stack.Screen name="HomeScreen" component={ HomeScreen } />
+          <Stack.Screen name="OnlineGameScreen" component={ OnlineGameScreen } />
+          <Stack.Screen name="VsBotGameScreent" component={ VsBotGameScreen } />
         </Stack.Navigator>
       </NavigationContainer>
     </SocketContext.Provider>
