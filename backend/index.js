@@ -45,6 +45,11 @@ const createGame = (player1Socket, player2Socket) => {
   games[gameIndex].player2Socket.emit('game.start', GameService.send.forPlayer.viewGameState('player:2', games[gameIndex]));
 };
 
+const leftQueue = (socket) => {
+  queue.shift(socket);
+  socket.emit('queue.left', GameService.send.forPlayer.viewQueueStateLeave());
+}
+
 
 /*============================================*/
 /*============ SOCKETS MANAGEMENT ============*/
@@ -55,6 +60,11 @@ io.on('connection', socket => {
   socket.on('queue.join', () => {
     console.log(`[${socket.id}] new player in queue `)
     newPlayerInQueue(socket);
+  });
+
+  socket.on('queue.left', () => {
+    console.log(`[${socket.id}] has left the queue`);
+    leftQueue(socket);
   });
 
   socket.on('disconnect', reason => {
