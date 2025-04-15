@@ -19,8 +19,8 @@ function App() {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="HomeScreen">
           <Stack.Screen name="HomeScreen" component={ HomeScreen } />
+          <Stack.Screen name="VsBotGameScreen" component={ VsBotGameScreen } />
           <Stack.Screen name="OnlineGameScreen" component={ OnlineGameScreen } />
-          <Stack.Screen name="VsBotGameScreent" component={ VsBotGameScreen } />
         </Stack.Navigator>
       </NavigationContainer>
     </SocketContext.Provider>
