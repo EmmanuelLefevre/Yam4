@@ -43,7 +43,7 @@ const PlayerDeck = () => {
 
   return (
 
-    <View style={styles.deckPlayerContainer}>
+    <View style={ styles.deckPlayerContainer }>
 
       {displayPlayerDeck && (
 
@@ -51,23 +51,23 @@ const PlayerDeck = () => {
           {displayRollButton && (
 
             <>
-              <View style={styles.rollInfoContainer}>
-                <Text style={styles.rollInfoText}>
-                  Lancer {rollsCounter} / {rollsMaximum}
+              <View style={ styles.rollInfoContainer }>
+                <Text style={ styles.rollInfoText }>
+                  Lancer { rollsCounter } / { rollsMaximum }
                 </Text>
               </View>
             </>
 
           )}
 
-          <View style={styles.diceContainer}>
+          <View style={ styles.diceContainer }>
             {dices.map((diceData, index) => (
               <Dice
-                key={diceData.id}
-                index={index}
-                locked={diceData.locked}
-                value={diceData.value}
-                onPress={toggleDiceLock}
+                key={ diceData.id }
+                index={ index }
+                locked={ diceData.locked }
+                value={ diceData.value }
+                onPress={ toggleDiceLock }
               />
             ))}
           </View>
@@ -75,8 +75,8 @@ const PlayerDeck = () => {
           {displayRollButton && (
 
             <>
-              <TouchableOpacity style={styles.rollButton} onPress={rollDices}>
-                <Text style={styles.rollButtonText}>Roll</Text>
+              <TouchableOpacity style={ styles.rollButton } onPress={ rollDices }>
+                <Text style={ styles.rollButtonText }>Roll</Text>
               </TouchableOpacity>
             </>
 
