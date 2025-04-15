@@ -1,20 +1,20 @@
 import { StyleSheet, View, Button } from "react-native";
 
 
-export default function HomeComponent({ navigation }) {
+export default function HomeScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
       <View style={styles.buttonWrapper}>
         <Button
           title="Jouer en ligne"
-          onPress={() => navigation.navigate('OnlineGameComponent')}
+          onPress={() => navigation.navigate('OnlineGameScreen')}
         />
       </View>
       <View style={styles.buttonWrapper}>
         <Button
           title="Jouer contre le bot"
-          onPress={() => navigation.navigate('VsBotGameComponent')}
+          onPress={() => navigation.navigate('VsBotGameScreen')}
         />
       </View>
     </View>
