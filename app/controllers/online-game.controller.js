@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 
 import { SocketContext } from '../contexts/socket.context';
 
@@ -24,6 +24,13 @@ export default function OnlineGameController() {
       setInGame(data['inGame']);
     });
 
+    socket.on('queue.left', (data) => {
+      console.log('[listen][queue.left]:', data);
+      setInQueue(false);
+      setInGame(false);
+      setIdOpponent(null);
+    });
+
     socket.on('game.start', (data) => {
       console.log('[listen][game.start]:', data);
       setInQueue(data['inQueue']);
@@ -31,6 +38,12 @@ export default function OnlineGameController() {
       setIdOpponent(data['idOpponent']);
     });
   }, []);
+
+  const leftQueue = () => {
+    console.log('[emit][queue.left]:', socket.id);
+    socket.emit("queue.left");
+    navigation.navigate("HomeComponent");
+  };
 
   return (
     <View style={styles.container}>
@@ -47,6 +60,9 @@ export default function OnlineGameController() {
           <Text style={styles.paragraph}>
             Waiting for another player...
           </Text>
+          <View style={styles.buttonContainer}>
+            <Button title="Quitter la file d'attente" onPress={ leftQueue } color="#d9534f" />
+          </View>
         </>
       )}
 
@@ -81,5 +97,8 @@ const styles = StyleSheet.create({
   },
   paragraph: {
     fontSize: 16,
+  },
+  buttonContainer: {
+    margin: 20
   }
 });
