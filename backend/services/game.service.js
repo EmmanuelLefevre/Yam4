@@ -33,7 +33,14 @@ const GameService = {
           inQueue: true,
           inGame: false
         };
-      }
+      },
+
+      viewQueueStateLeave: () => {
+        return {
+            inQueue: false,
+            inGame: false,
+        };
+      },
     }
   },
   utils: {
