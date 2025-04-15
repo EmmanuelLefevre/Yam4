@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 
 const Dice = ({ index, locked, value, onPress, opponent }) => {
@@ -12,11 +12,11 @@ const Dice = ({ index, locked, value, onPress, opponent }) => {
 
   return (
     <TouchableOpacity
-      style={[styles.dice, locked && styles.lockedDice]}
-      onPress={handlePress}
-      disabled={opponent}
+      style={ [styles.dice, locked && styles.lockedDice] }
+      onPress={ handlePress }
+      disabled={ opponent }
     >
-      <Text style={styles.diceText}>{value}</Text>
+      <Text style={ styles.diceText }>{ value }</Text>
     </TouchableOpacity>
   );
 };

@@ -4,7 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 const OpponentInfos = () => {
   return (
-    <View style={styles.opponentInfosContainer}>
+    <View style={ styles.opponentInfosContainer }>
       <Text>Opponent infos</Text>
     </View>
   );
@@ -12,7 +12,7 @@ const OpponentInfos = () => {
 
 const OpponentTimer = () => {
   return (
-    <View style={styles.opponentTimerContainer}>
+    <View style={ styles.opponentTimerContainer }>
       <Text>Timer: </Text>
     </View>
   );
@@ -20,7 +20,7 @@ const OpponentTimer = () => {
 
 const OpponentScore = () => {
   return (
-    <View style={styles.opponentScoreContainer}>
+    <View style={ styles.opponentScoreContainer }>
       <Text>Score: </Text>
     </View>
   );
@@ -29,7 +29,7 @@ const OpponentScore = () => {
 const OpponentDeck = () => {
 
   return (
-    <View style={styles.deckOpponentContainer}>
+    <View style={ styles.deckOpponentContainer }>
       <Text>OpponentDeck</Text>
     </View>
   );
@@ -38,7 +38,7 @@ const OpponentDeck = () => {
 const Grid = () => {
 
   return (
-    <View style={styles.gridContainer}>
+    <View style={ styles.gridContainer }>
       <Text>Grid</Text>
     </View>
   );
@@ -47,7 +47,7 @@ const Grid = () => {
 const Choices = () => {
 
   return (
-    <View style={styles.choicesContainer}>
+    <View style={ styles.choicesContainer }>
       <Text>Choices</Text>
     </View>
   );
@@ -55,7 +55,7 @@ const Choices = () => {
 
 const PlayerDeck = () => {
   return (
-    <View style={styles.deckPlayerContainer}>
+    <View style={ styles.deckPlayerContainer }>
       <Text>PlayerDeck </Text>
     </View>
   );
@@ -63,7 +63,7 @@ const PlayerDeck = () => {
 
 const PlayerInfos = () => {
   return (
-    <View style={styles.playerInfosContainer}>
+    <View style={ styles.playerInfosContainer }>
       <Text>Player Infos</Text>
     </View>
   );
@@ -72,7 +72,7 @@ const PlayerInfos = () => {
 const PlayerTimer = () => {
 
   return (
-    <View style={styles.playerTimerContainer}>
+    <View style={ styles.playerTimerContainer }>
       <Text>Timer: </Text>
     </View>
   );
@@ -81,7 +81,7 @@ const PlayerTimer = () => {
 const PlayerScore = () => {
 
   return (
-    <View style={styles.playerScoreContainer}>
+    <View style={ styles.playerScoreContainer }>
       <Text>PlayerScore</Text>
     </View>
   );
@@ -91,27 +91,27 @@ const PlayerScore = () => {
 
 const Board = ({ gameViewState}) => {
   return (
-    <View style={styles.container}>
-      <View style={[styles.row, { height: '5%' }]}>
+    <View style={ styles.container }>
+      <View style={ [styles.row, { height: '5%' }] }>
         <OpponentInfos />
-        <View style={styles.opponentTimerScoreContainer}>
+        <View style={ styles.opponentTimerScoreContainer }>
           <OpponentTimer />
           <OpponentScore />
         </View>
       </View>
-      <View style={[styles.row, { height: '25%' }]}>
+      <View style={ [styles.row, { height: '25%' }] }>
         <OpponentDeck />
       </View>
-      <View style={[styles.row, { height: '40%' }]}>
+      <View style={ [styles.row, { height: '40%' }] }>
         <Grid />
         <Choices />
       </View>
-      <View style={[styles.row, { height: '25%' }]}>
+      <View style={ [styles.row, { height: '25%' }] }>
         <PlayerDeck />
       </View>
-      <View style={[styles.row, { height: '5%' }]}>
+      <View style={ [styles.row, { height: '5%' }] }>
         <PlayerInfos />
-        <View style={styles.playerTimerScoreContainer}>
+        <View style={ styles.playerTimerScoreContainer }>
           <PlayerTimer />
           <PlayerScore />
         </View>
@@ -149,11 +149,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: "lightgrey"
-  },
-  opponentTimerContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   opponentScoreContainer: {
     flex: 1,
@@ -197,12 +192,6 @@ const styles = StyleSheet.create({
   playerTimerScoreContainer: {
     flex: 3,
     flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: "lightgrey"
-  },
-  playerTimerContainer: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: "lightgrey"

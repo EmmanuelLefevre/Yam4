@@ -1,3 +1,9 @@
+import React, { useEffect, useState, useContext } from "react";
+import { StyleSheet, Text, View } from "react-native";
+
+import { SocketContext } from '../contexts/socket.context';
+
+
 const OpponentTimer = () => {
   const socket = useContext(SocketContext);
   const [opponentTimer, setOpponentTimer] = useState(0);
@@ -10,8 +16,18 @@ const OpponentTimer = () => {
 
   }, []);
   return (
-    <View style={styles.opponentTimerContainer}>
-      <Text>Timer: {opponentTimer}</Text>
+    <View style={ styles.opponentTimerContainer }>
+      <Text>Timer: { opponentTimer }</Text>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  opponentTimerContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+})
+
+export default OpponentTimer;
