@@ -40,8 +40,8 @@ export default function OnlineGameController() {
   }, []);
 
   const leftQueue = () => {
-    console.log('[emit][queue.left]:', socket.id);
-    socket.emit("queue.left");
+    console.log('[emit][queue.leave]:', socket.id);
+    socket.emit("queue.leave");
   };
 
   return (
