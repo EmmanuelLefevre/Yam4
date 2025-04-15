@@ -20,7 +20,6 @@ const newPlayerInQueue = (socket) => {
 
   queue.push(socket);
 
-  // Queue management
   if (queue.length >= 2) {
     const player1Socket = queue.shift();
     const player2Socket = queue.shift();
