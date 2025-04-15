@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { StyleSheet, View, Button, Text } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 
 import { SocketContext } from '../contexts/socket.context';
 
@@ -24,7 +24,7 @@ export default function OnlineGameComponent({ navigation }) {
       )}
 
       {socket && (
-        <OnlineGameController />
+        <OnlineGameController navigation={ navigation } />
       )}
     </View>
   );
