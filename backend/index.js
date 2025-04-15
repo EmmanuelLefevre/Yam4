@@ -48,6 +48,7 @@ const createGame = (player1Socket, player2Socket) => {
 const leftQueue = (socket) => {
   queue.shift(socket);
   socket.emit('queue.left', GameService.send.forPlayer.viewQueueStateLeave());
+  console.log(`[${socket.id}] have left the queue `);
 }
 
 
@@ -58,12 +59,12 @@ io.on('connection', socket => {
   console.log(`[${socket.id}] socket connected`);
 
   socket.on('queue.join', () => {
-    console.log(`[${socket.id}] new player in queue `)
+    console.log(`[${socket.id}] new player in queue `);
     newPlayerInQueue(socket);
   });
 
-  socket.on('queue.left', () => {
-    console.log(`[${socket.id}] has left the queue`);
+  socket.on('queue.leave', () => {
+    console.log(`Player [${socket.id}] want to leave the queue`);
     leftQueue(socket);
   });
 
