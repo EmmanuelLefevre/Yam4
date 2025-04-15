@@ -26,9 +26,9 @@ export default function OnlineGameController() {
 
     socket.on('queue.left', (data) => {
       console.log('[listen][queue.left]:', data);
-      setInQueue(false);
-      setInGame(false);
-      setIdOpponent(null);
+      setInQueue(data['inQueue']);
+      setInGame(data['inQueue']);
+      navigation.navigate("HomeComponent");
     });
 
     socket.on('game.start', (data) => {
@@ -42,11 +42,10 @@ export default function OnlineGameController() {
   const leftQueue = () => {
     console.log('[emit][queue.left]:', socket.id);
     socket.emit("queue.left");
-    navigation.navigate("HomeComponent");
   };
 
   return (
-    <View style={styles.container}>
+    <View style={ styles.container }>
       {!inQueue && !inGame && (
         <>
           <Text style={styles.paragraph}>
@@ -57,10 +56,10 @@ export default function OnlineGameController() {
 
       {inQueue && (
         <>
-          <Text style={styles.paragraph}>
+          <Text style={ styles.paragraph }>
             Waiting for another player...
           </Text>
-          <View style={styles.buttonContainer}>
+          <View style={ styles.buttonContainer }>
             <Button title="Quitter la file d'attente" onPress={ leftQueue } color="#d9534f" />
           </View>
         </>
@@ -68,17 +67,17 @@ export default function OnlineGameController() {
 
       {inGame && (
         <>
-          <Text style={styles.paragraph}>
+          <Text style={ styles.paragraph }>
             Game found !
           </Text>
-          <Text style={styles.paragraph}>
-            Player - {socket.id} -
+          <Text style={ styles.paragraph }>
+            Player - { socket.id } -
           </Text>
-          <Text style={styles.paragraph}>
+          <Text style={ styles.paragraph }>
             - vs -
           </Text>
-          <Text style={styles.paragraph}>
-            Player - {idOpponent} -
+          <Text style={ styles.paragraph }>
+            Player - { idOpponent } -
           </Text>
         </>
       )}
