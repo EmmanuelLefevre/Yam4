@@ -13,14 +13,12 @@ const GAME_INIT = {
 const GameService = {
 
   init: {
-    // Init first level of structure of 'gameState' object
     gameState: () => {
       return GAME_INIT;
     },
   },
   send: {
     forPlayer: {
-      // Return conditionnaly gameState custom objet for player views
       viewGameState: (playerKey, game) => {
         return {
           inQueue: false,
@@ -39,11 +37,9 @@ const GameService = {
     }
   },
   utils: {
-    // Return game index in global games array by id
     findGameIndexById: (games, idGame) => {
       for (let i = 0; i < games.length; i++) {
         if (games[i].idGame === idGame) {
-          // Retourne l'index du jeu si le socket est trouvé
           return i;
         }
       }
