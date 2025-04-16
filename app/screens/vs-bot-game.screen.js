@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { StyleSheet, View, Button, Text } from "react-native";
+import { Button, StyleSheet, Text,  View } from "react-native";
 
 import { SocketContext } from '../contexts/socket.context';
 
