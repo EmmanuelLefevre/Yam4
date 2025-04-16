@@ -16,14 +16,14 @@ import PlayerTimer from './timers/player-timer.component';
 const Board = ({ gameViewState}) => {
   return (
     <View style={ styles.container }>
-      <View style={ [styles.row, { height: '5%' }] }>
+      <View style={ [styles.row, { height: '10%' }] }>
         <OpponentInfos />
         <View style={ styles.opponentTimerScoreContainer }>
           <OpponentTimer />
           <OpponentScore />
         </View>
       </View>
-      <View style={ [styles.row, { height: '25%' }] }>
+      <View style={ [styles.row, { height: '15%' }] }>
         <OpponentDeck />
       </View>
       <View style={ [styles.row, { height: '40%' }] }>
@@ -33,7 +33,7 @@ const Board = ({ gameViewState}) => {
       <View style={ [styles.row, { height: '25%' }] }>
         <PlayerDeck />
       </View>
-      <View style={ [styles.row, { height: '5%' }] }>
+      <View style={ [styles.row, { height: '10%' }] }>
         <PlayerInfos />
         <View style={ styles.playerTimerScoreContainer }>
           <PlayerTimer />
@@ -54,22 +54,21 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   row: {
+    height: 20,
     flexDirection: 'row',
     width: '100%',
     borderBottomWidth: 1,
     borderColor: 'black',
   },
   playerTimerScoreContainer: {
-    width: 100,
-    flex: 3,
+    flex: 2,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: "lightgrey"
   },
   opponentTimerScoreContainer: {
-    width: 100,
-    flex: 3,
+    flex: 2,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',

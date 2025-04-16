@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 const OpponentInfos = () => {
   return (
     <View style={ styles.opponentInfosContainer }>
-      <Text>Opponent infos</Text>
+      <Text>Opponent</Text>
     </View>
   );
 };
