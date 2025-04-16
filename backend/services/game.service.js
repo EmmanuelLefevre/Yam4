@@ -9,7 +9,7 @@ const DECK_INIT = {
     { id: 4, value: '', locked: true },
     { id: 5, value: '', locked: true },
   ],
-  rollsCounter: 1,
+  rollsCounter: 0,
   rollsMaximum: 3
 };
 
@@ -87,7 +87,7 @@ const GameService = {
         const deckViewState = {
             displayPlayerDeck: gameState.currentTurn === playerKey,
             displayOpponentDeck: gameState.currentTurn !== playerKey,
-            displayRollButton: gameState.deck.rollsCounter <= gameState.deck.rollsMaximum,
+            displayRollButton: gameState.deck.rollsCounter <= gameState.deck.rollsMaximum - 1,
             rollsCounter: gameState.deck.rollsCounter,
             rollsMaximum: gameState.deck.rollsMaximum,
             dices: gameState.deck.dices
