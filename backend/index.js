@@ -118,22 +118,15 @@ io.on('connection', socket => {
     const gameIndex = GameService.utils.findGameIndexBySocketId(games, socket.id);
 
     if (games[gameIndex].gameState.deck.rollsCounter < games[gameIndex].gameState.deck.rollsMaximum) {
-      // si ce n'est pas le dernier lancé
-
-      // gestion des dés 
       games[gameIndex].gameState.deck.dices = GameService.dices.roll(games[gameIndex].gameState.deck.dices);
       games[gameIndex].gameState.deck.rollsCounter++;
 
       // gestion des combinaisons ici
 
-      // gestion des vues
       updateClientsViewDecks(games[gameIndex]);
 
     }
     else {
-      // si c'est le dernier lancer
-
-      // gestion des dés
       games[gameIndex].gameState.deck.dices = GameService.dices.roll(games[gameIndex].gameState.deck.dices);
       games[gameIndex].gameState.deck.rollsCounter++;
       games[gameIndex].gameState.deck.dices = GameService.dices.lockEveryDice(games[gameIndex].gameState.deck.dices);
@@ -151,7 +144,6 @@ io.on('connection', socket => {
     const gameIndex = GameService.utils.findGameIndexBySocketId(games, socket.id);
     const indexDice = GameService.utils.findDiceIndexByDiceId(games[gameIndex].gameState.deck.dices, idDice);
 
-    // reverse flag 'locked'
     games[gameIndex].gameState.deck.dices[indexDice].locked = !games[gameIndex].gameState.deck.dices[indexDice].locked;
 
     updateClientsViewDecks(games[gameIndex]);
