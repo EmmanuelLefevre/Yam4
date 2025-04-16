@@ -5,7 +5,7 @@ const PlayerScore = () => {
 
   return (
     <View style={ styles.playerScoreContainer }>
-      <Text>PlayerScore</Text>
+      <Text>Score: </Text>
     </View>
   );
 };
