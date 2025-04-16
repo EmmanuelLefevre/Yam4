@@ -12,14 +12,6 @@ import PlayerScore from './scores/player-score.component';
 import PlayerTimer from './timers/player-timer.component';
 
 
-const Grid = () => {
-  return (
-    <View style={ styles.gridContainer }>
-      <Text>Grid</Text>
-    </View>
-  );
-};
-
 const Board = ({ gameViewState}) => {
   return (
     <View style={ styles.container }>
@@ -81,13 +73,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: "lightgrey"
-  },
-  gridContainer: {
-    flex: 7,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRightWidth: 1,
-    borderColor: 'black',
   }
 });
 
