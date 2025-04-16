@@ -98,20 +98,20 @@ const leftQueue = (socket) => {
 /*============ SOCKETS MANAGEMENT ============*/
 /*============================================*/
 io.on('connection', socket => {
-  console.log(`[${socket.id}] socket connected`);
+  console.log(`[${ socket.id }] socket connected`);
 
   socket.on('queue.join', () => {
-    console.log(`[${socket.id}] new player in queue `);
+    console.log(`[${ socket.id }] new player in queue `);
     newPlayerInQueue(socket);
   });
 
   socket.on('queue.leave', () => {
-    console.log(`Player [${socket.id}] want to leave the queue`);
+    console.log(`Player [${ socket.id }] want to leave the queue`);
     leftQueue(socket);
   });
 
   socket.on('disconnect', reason => {
-    console.log(`[${socket.id}] socket disconnected - ${reason}`);
+    console.log(`[${ socket.id }] socket disconnected - ${ reason }`);
   });
 
   socket.on('game.dices.roll', () => {
