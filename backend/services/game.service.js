@@ -28,7 +28,10 @@ const GameService = {
 
   init: {
     gameState: () => {
-      return GAME_INIT;
+      const game = { ...GAME_INIT };
+      game['gameState']['timer'] = TURN_DURATION;
+      game['gameState']['deck'] = { ...DECK_INIT };
+      return game;
     },
 
     deck: () => {
@@ -44,6 +47,18 @@ const GameService = {
           idPlayer: (playerKey === 'player:1') ? game.player1Socket.id : game.player2Socket.id,
           idOpponent: (playerKey === 'player:1') ? game.player2Socket.id : game.player1Socket.id
         };
+      },
+
+      deckViewState: (playerKey, gameState) => {
+        const deckViewState = {
+            displayPlayerDeck: gameState.currentTurn === playerKey,
+            displayOpponentDeck: gameState.currentTurn !== playerKey,
+            displayRollButton: gameState.deck.rollsCounter <= gameState.deck.rollsMaximum,
+            rollsCounter: gameState.deck.rollsCounter,
+            rollsMaximum: gameState.deck.rollsMaximum,
+            dices: gameState.deck.dices
+        };
+        return deckViewState;
       },
 
       viewQueueState: () => {
@@ -134,7 +149,7 @@ const GameService = {
     findGameIndexBySocketId: (games, socketId) => {
       for (let i = 0; i < games.length; i++) {
         if (games[i].player1Socket.id === socketId || games[i].player2Socket.id === socketId) {
-          return i; // Retourne l'index du jeu si le socket est trouvé
+          return i;
         }
       }
       return -1;
@@ -143,7 +158,7 @@ const GameService = {
     findDiceIndexByDiceId: (dices, idDice) => {
       for (let i = 0; i < dices.length; i++) {
         if (dices[i].id === idDice) {
-          return i; // Retourne l'index du jeu si le socket est trouvé
+          return i;
         }
       }
       return -1;
