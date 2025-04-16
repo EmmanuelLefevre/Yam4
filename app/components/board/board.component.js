@@ -1,8 +1,9 @@
 import React from "react";
 import { View, Text, StyleSheet } from 'react-native';
 
-import PlayerTimer from './timers/player-timer.component';
 import OpponentTimer from './timers/opponent-timer.component';
+import PlayerDeck from './decks/player-deck.component';
+import PlayerTimer from './timers/player-timer.component';
 
 
 const OpponentInfos = () => {
@@ -44,14 +45,6 @@ const Choices = () => {
   return (
     <View style={ styles.choicesContainer }>
       <Text>Choices</Text>
-    </View>
-  );
-};
-
-const PlayerDeck = () => {
-  return (
-    <View style={ styles.deckPlayerContainer }>
-      <Text>PlayerDeck </Text>
     </View>
   );
 };
@@ -129,7 +122,16 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     backgroundColor: "lightgrey"
   },
+  playerTimerScoreContainer: {
+    width: 100,
+    flex: 3,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: "lightgrey"
+  },
   opponentTimerScoreContainer: {
+    width: 100,
     flex: 3,
     flexDirection: 'column',
     justifyContent: 'center',
@@ -173,13 +175,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRightWidth: 1,
     borderColor: 'black',
-    backgroundColor: "lightgrey"
-  },
-  playerTimerScoreContainer: {
-    flex: 3,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: "lightgrey"
   },
   playerScoreContainer: {
