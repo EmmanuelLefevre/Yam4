@@ -9,7 +9,7 @@ const DECK_INIT = {
     { id: 4, value: '', locked: true },
     { id: 5, value: '', locked: true },
   ],
-  rollsCounter: 0,
+  rollsCounter: 1,
   rollsMaximum: 3
 };
 
