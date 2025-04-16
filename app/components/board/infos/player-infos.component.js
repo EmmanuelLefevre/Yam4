@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 const PlayerInfos = () => {
   return (
     <View style={ styles.playerInfosContainer }>
-      <Text>Player Infos</Text>
+      <Text>Player</Text>
     </View>
   );
 };
