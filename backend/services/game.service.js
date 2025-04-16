@@ -1,4 +1,5 @@
-const TURN_DURATION= 60;
+const TURN_DURATION = 60;
+const GET_END_TURN_DURATION = 10;
 
 const DECK_INIT = {
   dices: [
@@ -98,6 +99,10 @@ const GameService = {
   timer: {
     getTurnDuration: () => {
       return TURN_DURATION;
+    },
+
+    getEndTurnDuration: () => {
+      return GET_END_TURN_DURATION;
     }
   },
   dices: {
