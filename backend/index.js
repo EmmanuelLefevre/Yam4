@@ -70,6 +70,7 @@ const createGame = (player1Socket, player2Socket) => {
       games[gameIndex].gameState.timer = GameService.timer.getTurnDuration();
 
       games[gameIndex].gameState.deck = GameService.init.deck();
+      games[gameIndex].gameState.choices = GameService.init.choices();
 
       updateClientsViewTimers(games[gameIndex]);
       updateClientsViewDecks(games[gameIndex]);
