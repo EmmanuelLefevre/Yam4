@@ -1,7 +1,8 @@
 import React from "react";
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import Choices from './choices/choices.component';
+import Grid from './grid/grid.component';
 import OpponentDeck from './decks/opponent-deck.component';
 import OpponentInfos from './infos/opponent-infos.component';
 import OpponentScore from './scores/opponent-score.component';
