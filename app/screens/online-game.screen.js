@@ -11,13 +11,13 @@ export default function OnlineGameScreen({ navigation }) {
   const socket = useContext(SocketContext);
 
   return (
-    <View style={styles.container}>
+    <View style={ styles.container }>
       {!socket && (
         <>
-          <Text style={styles.paragraph}>
+          <Text style={ styles.paragraph }>
             No connection with server...
           </Text>
-          <Text style={styles.footnote}>
+          <Text style={ styles.footnote }>
             Restart the app and wait for the server to be back again.
           </Text>
         </>
