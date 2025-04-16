@@ -28,6 +28,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  opponentTimerScoreContainer: {
+    flex: 3,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: "lightgrey"
+  },
 })
 
 export default OpponentTimer;
