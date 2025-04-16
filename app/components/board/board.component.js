@@ -2,18 +2,12 @@ import React from "react";
 import { View, Text, StyleSheet } from 'react-native';
 
 import OpponentDeck from './decks/opponent-deck.component';
+import OpponentInfos from './infos/opponent-infos.component';
 import OpponentTimer from './timers/opponent-timer.component';
 import PlayerDeck from './decks/player-deck.component';
+import PlayerInfos from './infos/player-infos.component';
 import PlayerTimer from './timers/player-timer.component';
 
-
-const OpponentInfos = () => {
-  return (
-    <View style={ styles.opponentInfosContainer }>
-      <Text>Opponent infos</Text>
-    </View>
-  );
-};
 
 const OpponentScore = () => {
   return (
@@ -41,14 +35,6 @@ const Choices = () => {
   );
 };
 
-const PlayerInfos = () => {
-  return (
-    <View style={ styles.playerInfosContainer }>
-      <Text>Player Infos</Text>
-    </View>
-  );
-};
-
 const PlayerScore = () => {
 
   return (
@@ -57,7 +43,6 @@ const PlayerScore = () => {
     </View>
   );
 };
-
 
 
 const Board = ({ gameViewState}) => {
@@ -106,14 +91,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: 'black',
   },
-  opponentInfosContainer: {
-    flex: 7,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRightWidth: 1,
-    borderColor: 'black',
-    backgroundColor: "lightgrey"
-  },
   playerTimerScoreContainer: {
     width: 100,
     flex: 3,
@@ -146,14 +123,6 @@ const styles = StyleSheet.create({
     flex: 3,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  playerInfosContainer: {
-    flex: 7,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRightWidth: 1,
-    borderColor: 'black',
-    backgroundColor: "lightgrey"
   },
   playerScoreContainer: {
     flex: 1,
