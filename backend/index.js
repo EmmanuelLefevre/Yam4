@@ -118,7 +118,7 @@ io.on('connection', socket => {
   socket.on('game.dices.roll', () => {
     const gameIndex = GameService.utils.findGameIndexBySocketId(games, socket.id);
 
-    if (games[gameIndex].gameState.deck.rollsCounter < games[gameIndex].gameState.deck.rollsMaximum) {
+    if (games[gameIndex].gameState.deck.rollsCounter < games[gameIndex].gameState.deck.rollsMaximum - 1) {
       games[gameIndex].gameState.deck.dices = GameService.dices.roll(games[gameIndex].gameState.deck.dices);
       games[gameIndex].gameState.deck.rollsCounter++;
 
