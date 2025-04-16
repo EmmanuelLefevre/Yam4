@@ -50,7 +50,6 @@ const ALL_COMBINATIONS = [
 
 
 const GameService = {
-
   init: {
     gameState: () => {
       const game = { ...GAME_INIT };
@@ -169,43 +168,37 @@ const GameService = {
   choices: {
     findCombinations: (dices, isDefi, isSec) => {
 
-        const allCombinations = ALL_COMBINATIONS;
+      const allCombinations = ALL_COMBINATIONS;
+      const availableCombinations = [];
 
-        // Tableau des objets 'combinations' disponibles parmi 'ALL_COMBINATIONS'
-        const availableCombinations = [];
+      const counts = Array(7).fill(0);
 
-        // Tableau pour compter le nombre de dés de chaque valeur (de 1 à 6)
-        const counts = Array(7).fill(0);
+      let hasPair = false;
+      let threeOfAKindValue = null;
+      let hasThreeOfAKind = false;
+      let hasFourOfAKind = false;
+      let hasFiveOfAKind = false;
+      let hasStraight = false;
+      let isLessThanEqual8 = false;
+      let sum = 0;
 
-        let hasPair = false; // check: paire
-        let threeOfAKindValue = null; // check: valeur brelan
-        let hasThreeOfAKind = false; // check: brelan
-        let hasFourOfAKind = false; // check: carré
-        let hasFiveOfAKind = false; // check: yam
-        let hasStraight = false; // check: suite
-        let isLessThanEqual8 = false;
-        let sum = 0; // sum of dices
+      // TODO: Vérifier les combinaisons possibles
 
-        // -----------------------------------
-        // TODO: Vérifier les combinaisons possibles
-        // -----------------------------------
+      allCombinations.forEach(combination => {
+        if (
+          (combination.id.includes('brelan') && hasThreeOfAKind && parseInt(combination.id.slice(-1)) === threeOfAKindValue) ||
+          (combination.id === 'full' && hasPair && hasThreeOfAKind) ||
+          (combination.id === 'carre' && hasFourOfAKind) ||
+          (combination.id === 'yam' && hasFiveOfAKind) ||
+          (combination.id === 'suite' && hasStraight) ||
+          (combination.id === 'moinshuit' && isLessThanEqual8) ||
+          (combination.id === 'defi' && isDefi)
+        ) {
+          availableCombinations.push(combination);
+        }
+      });
 
-        // return available combinations
-        allCombinations.forEach(combination => {
-            if (
-                (combination.id.includes('brelan') && hasThreeOfAKind && parseInt(combination.id.slice(-1)) === threeOfAKindValue) ||
-                (combination.id === 'full' && hasPair && hasThreeOfAKind) ||
-                (combination.id === 'carre' && hasFourOfAKind) ||
-                (combination.id === 'yam' && hasFiveOfAKind) ||
-                (combination.id === 'suite' && hasStraight) ||
-                (combination.id === 'moinshuit' && isLessThanEqual8) ||
-                (combination.id === 'defi' && isDefi)
-            ) {
-                availableCombinations.push(combination);
-            }
-        });
-
-        return availableCombinations;
+      return availableCombinations;
     }
   },
   utils: {
