@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from 'react-native';
 
+import OpponentDeck from './decks/opponent-deck.component';
 import OpponentTimer from './timers/opponent-timer.component';
 import PlayerDeck from './decks/player-deck.component';
 import PlayerTimer from './timers/player-timer.component';
@@ -18,15 +19,6 @@ const OpponentScore = () => {
   return (
     <View style={ styles.opponentScoreContainer }>
       <Text>Score: </Text>
-    </View>
-  );
-};
-
-const OpponentDeck = () => {
-
-  return (
-    <View style={ styles.deckOpponentContainer }>
-      <Text>OpponentDeck</Text>
     </View>
   );
 };
@@ -143,13 +135,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  deckOpponentContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    borderBottomWidth: 1,
-    borderColor: "black"
-  },
   gridContainer: {
     flex: 7,
     justifyContent: 'center',
@@ -161,13 +146,6 @@ const styles = StyleSheet.create({
     flex: 3,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  deckPlayerContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderBottomWidth: 1,
-    borderColor: 'black',
   },
   playerInfosContainer: {
     flex: 7,

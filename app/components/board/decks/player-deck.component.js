@@ -96,6 +96,13 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: "black"
   },
+  deckOpponentContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    borderBottomWidth: 1,
+    borderColor: "black"
+  },
   rollInfoContainer: {
     marginBottom: 10,
   },
