@@ -14,8 +14,7 @@ const Dice = ({ index, locked, value, onPress, opponent }) => {
     <TouchableOpacity
       style={ [styles.dice, locked && styles.lockedDice] }
       onPress={ handlePress }
-      disabled={ opponent }
-    >
+      disabled={ opponent }>
       <Text style={ styles.diceText }>{ value }</Text>
     </TouchableOpacity>
   );
