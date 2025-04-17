@@ -55,6 +55,7 @@ const GameService = {
       const game = { ...GAME_INIT };
       game['gameState']['timer'] = TURN_DURATION;
       game['gameState']['deck'] = { ...DECK_INIT };
+      game['gameState']['choices'] = { ...CHOICES_INIT };
       return game;
     },
 
@@ -111,12 +112,13 @@ const GameService = {
       },
 
       choicesViewState: (playerKey, gameState) => {
-        return {
-            displayChoices: true,
-            canMakeChoice: playerKey === gameState.currentTurn,
-            idSelectedChoice: gameState.choices.idSelectedChoice,
-            availableChoices: gameState.choices.availableChoices
-        };
+        const choicesViewState = {
+          displayChoices: true,
+          canMakeChoice: playerKey === gameState.currentTurn,
+          idSelectedChoice: gameState.choices.idSelectedChoice,
+          availableChoices: gameState.choices.availableChoices
+        }
+        return choicesViewState;
       }
     }
   },
