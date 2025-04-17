@@ -42,14 +42,11 @@ const PlayerDeck = () => {
   };
 
   return (
-
     <View style={ styles.deckPlayerContainer }>
 
       {displayPlayerDeck && (
-
         <>
           {displayRollButton && (
-
             <>
               <View style={ styles.rollInfoContainer }>
                 <Text style={ styles.rollInfoText }>
@@ -57,7 +54,6 @@ const PlayerDeck = () => {
                 </Text>
               </View>
             </>
-
           )}
 
           <View style={ styles.diceContainer }>
@@ -73,13 +69,11 @@ const PlayerDeck = () => {
           </View>
 
           {displayRollButton && (
-
             <>
               <TouchableOpacity style={ styles.rollButton } onPress={ rollDices }>
                 <Text style={ styles.rollButtonText }>Roll</Text>
               </TouchableOpacity>
             </>
-
           )}
         </>
       )}
