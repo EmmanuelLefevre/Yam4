@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FE6E00"
   },
   rollButtonText: {
-    fontSize: 18,
+    fontSize: 15,
     color: "white",
     fontWeight: "bold",
   },
