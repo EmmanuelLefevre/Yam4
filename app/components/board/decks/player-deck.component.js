@@ -94,14 +94,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderBottomWidth: 1,
-    borderColor: "black"
+    borderColor: "#FE6E00"
   },
   deckOpponentContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     borderBottomWidth: 1,
-    borderColor: "black"
+    borderColor: "#FE6E00"
   },
   rollInfoContainer: {
     marginBottom: 10,
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "black"
+    backgroundColor: "#FE6E00"
   },
   rollButtonText: {
     fontSize: 18,
