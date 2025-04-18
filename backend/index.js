@@ -28,6 +28,13 @@ const updateClientsViewDecks = (game) => {
   }, 200);
 };
 
+const updateClientsViewChoices = (game) => {
+  setTimeout(() => {
+    game.player1Socket.emit('game.choices.view-state', GameService.send.forPlayer.choicesViewState('player:1', game.gameState));
+    game.player2Socket.emit('game.choices.view-state', GameService.send.forPlayer.choicesViewState('player:2', game.gameState));
+  }, 200);
+}
+
 
 /*======================================*/
 /*============ GAME METHODS ============*/
@@ -65,6 +72,8 @@ const createGame = (player1Socket, player2Socket) => {
   const gameInterval = setInterval(() => {
     games[gameIndex].gameState.timer--;
 
+    updateClientsViewTimers(games[gameIndex]);
+
     if (games[gameIndex].gameState.timer === 0) {
       games[gameIndex].gameState.currentTurn = games[gameIndex].gameState.currentTurn === 'player:1' ? 'player:2' : 'player:1';
       games[gameIndex].gameState.timer = GameService.timer.getTurnDuration();
@@ -74,6 +83,7 @@ const createGame = (player1Socket, player2Socket) => {
 
       updateClientsViewTimers(games[gameIndex]);
       updateClientsViewDecks(games[gameIndex]);
+      updateClientsViewChoices(games[gameIndex]);
     }
 
     games[gameIndex].player1Socket.emit('game.timer', GameService.send.forPlayer.gameTimer('player:1', games[gameIndex].gameState));
@@ -122,9 +132,15 @@ io.on('connection', socket => {
       games[gameIndex].gameState.deck.dices = GameService.dices.roll(games[gameIndex].gameState.deck.dices);
       games[gameIndex].gameState.deck.rollsCounter++;
 
-      // gestion des combinaisons ici
+      const dices = games[gameIndex].gameState.deck.dices;
+      const isDefi = false;
+      const isSec = games[gameIndex].gameState.deck.rollsCounter === 2;
+
+      const combinations = GameService.choices.findCombinations(dices, isDefi, isSec);
+      games[gameIndex].gameState.choices.availableChoices = combinations;
 
       updateClientsViewDecks(games[gameIndex]);
+      updateClientsViewChoices(games[gameIndex]);
 
     }
     else {
@@ -132,11 +148,15 @@ io.on('connection', socket => {
       games[gameIndex].gameState.deck.rollsCounter++;
       games[gameIndex].gameState.deck.dices = GameService.dices.lockEveryDice(games[gameIndex].gameState.deck.dices);
 
-      // gestion des combinaisons ici
+      const dices = games[gameIndex].gameState.deck.dices;
+      const isDefi = false;
+      const isSec = games[gameIndex].gameState.deck.rollsCounter === 2;
 
       games[gameIndex].gameState.timer = GameService.timer.getEndTurnDuration();
+
       updateClientsViewTimers(games[gameIndex]);
       updateClientsViewDecks(games[gameIndex]);
+      updateClientsViewChoices(games[gameIndex]);
     }
 
   });
@@ -148,6 +168,13 @@ io.on('connection', socket => {
     games[gameIndex].gameState.deck.dices[indexDice].locked = !games[gameIndex].gameState.deck.dices[indexDice].locked;
 
     updateClientsViewDecks(games[gameIndex]);
+  });
+
+  socket.on('game.choices.selected', (data) => {
+    const gameIndex = GameService.utils.findGameIndexBySocketId(games, socket.id);
+    games[gameIndex].gameState.choices.idSelectedChoice = data.choiceId;
+
+    updateClientsViewChoices(games[gameIndex]);
   });
 });
 
