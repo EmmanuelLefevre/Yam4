@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   customButton: {
     alignItems: 'center',
-    width: 150,
+    width: 100,
     marginVertical: 10,
     paddingVertical: 10,
     backgroundColor: '#FFF',
@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   buttonText: {
-    color: '#FE6E00',
     fontSize: 14,
+    color: '#FE6E00',
+    fontWeight: "bold",
   },
 });
