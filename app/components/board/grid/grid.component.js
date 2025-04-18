@@ -9,11 +9,7 @@ const Grid = () => {
 
   const [displayGrid, setDisplayGrid] = useState(true);
   const [canSelectCells, setCanSelectCells] = useState([]);
-  const [grid, setGrid] = useState(
-    Array(5).fill().map(() => Array(5).fill().map(() => (
-      { viewContent: '', id: '', owner: null, canBeChecked: false }
-    ))
-  ));
+  const [grid, setGrid] = useState([]);
 
   const handleSelectCell = (cellId, rowIndex, cellIndex) => {
     if (canSelectCells) {
