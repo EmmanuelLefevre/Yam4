@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   customButton: {
     alignItems: 'center',
-    width: 100,
+    width: 150,
     marginVertical: 10,
     paddingVertical: 10,
     backgroundColor: '#FFF',
