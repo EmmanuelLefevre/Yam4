@@ -89,15 +89,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    borderBottomWidth: 1,
-    borderColor: "#FE6E00"
+    // borderBottomWidth: 1,
+    // borderColor: "#FE6E00"
   },
   deckOpponentContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    borderBottomWidth: 1,
-    borderColor: "#FE6E00"
+    // borderBottomWidth: 1,
+    // borderColor: "#FE6E00"
   },
   rollInfoContainer: {
     marginBottom: 10,
