@@ -26,14 +26,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: "lightgrey"
+    // backgroundColor: "lightgrey"
   },
   playerTimerScoreContainer: {
     flex: 3,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: "lightgrey"
+    // backgroundColor: "lightgrey"
   },
 })
 
