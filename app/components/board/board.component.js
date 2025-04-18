@@ -57,22 +57,23 @@ const styles = StyleSheet.create({
     height: 20,
     flexDirection: 'row',
     width: '100%',
-    borderBottomWidth: 1,
-    borderColor: 'black',
+    // borderBottomWidth: 2,
+    // borderTopWidth: 2,
+    // borderColor: '#FE6E00',
   },
   playerTimerScoreContainer: {
     flex: 2,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: "lightgrey"
+    // backgroundColor: "lightgrey"
   },
   opponentTimerScoreContainer: {
     flex: 2,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: "lightgrey"
+    // backgroundColor: "lightgrey"
   }
 });
 
