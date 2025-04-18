@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import { SocketContext } from '../contexts/socket.context';
 
@@ -62,7 +62,13 @@ export default function OnlineGameController() {
             Waiting for another player...
           </Text>
           <View style={ styles.buttonContainer }>
-            <Button title="Quitter la file d'attente" onPress={ leftQueue } color="#d9534f" />
+            <TouchableOpacity
+              style={ styles.customButton }
+              onPress={ leftQueue }>
+              <Text style={ styles.buttonText }>
+                Quitter la file d'attente
+              </Text>
+            </TouchableOpacity>
           </View>
         </>
       )}
@@ -90,5 +96,20 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     margin: 20
-  }
+  },
+  customButton: {
+    alignItems: 'center',
+    width: 180,
+    marginVertical: 10,
+    paddingVertical: 10,
+    backgroundColor: '#FFF',
+    borderWidth: 2,
+    borderColor: '#FF0000',
+    borderRadius: 8,
+  },
+  buttonText: {
+    fontSize: 14,
+    color: '#FF0000',
+    fontWeight: "bold",
+  },
 });
