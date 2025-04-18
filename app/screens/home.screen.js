@@ -1,47 +1,73 @@
-import { Button, Image, StyleSheet, View } from "react-native";
+import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import logo from "../assets/img/logo_yam4.png";
 
 
 export default function HomeScreen({ navigation }) {
-
   return (
-    <>
+    <View style={ styles.container }>
       <View style={ styles.logoContainer }>
-        <Image source={ logo } style={ styles.logo } resizeMode="contain" />
+        <Image
+          source={ logo }
+          style={ styles.logo }
+          resizeMode="contain" />
       </View>
-      <View style={ styles.container }>
+      <View style={ styles.buttonContainer }>
         <View style={ styles.buttonWrapper }>
-          <Button
-            title="Jouer en ligne"
-            onPress={ () => navigation.navigate('OnlineGameScreen') }/>
+          <TouchableOpacity
+            style={ styles.customButton }
+            onPress={ () => navigation.navigate('OnlineGameScreen') }>
+            <Text style={ styles.buttonText }>Jouer en ligne</Text>
+          </TouchableOpacity>
         </View>
         <View style={ styles.buttonWrapper }>
-          <Button
-            title="Jouer contre le bot"
-            onPress={ () => navigation.navigate('VsBotGameScreen') }/>
+          <TouchableOpacity
+            style={ styles.customButton }
+            onPress={ () => navigation.navigate('VsBotGameScreen') }>
+            <Text style={ styles.buttonText }>Jouer contre le bot</Text>
+          </TouchableOpacity>
         </View>
       </View>
-    </>
+    </View>
   );
 }
+
+const { height: screenHeight } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  buttonWrapper: {
-    marginVertical: 10,
+    justifyContent: 'space-between',
+    paddingVertical: 40,
+    backgroundColor: '#FFF',
   },
   logoContainer: {
-    marginBottom: 10,
+    justifyContent: "center",
     alignItems: "center",
+    width: "100%",
+    height: screenHeight * 0.3,
+    marginTop: 50,
   },
   logo: {
-    width: 100,
-    height: 40,
-  }
+    width: "100%",
+    height: "100%",
+  },
+  buttonContainer: {
+    alignItems: 'center',
+    marginBottom: 30,
+  },
+  customButton: {
+    alignItems: 'center',
+    width: 150,
+    marginVertical: 10,
+    paddingVertical: 10,
+    backgroundColor: '#FFF',
+    borderWidth: 2,
+    borderColor: '#FE6E00',
+    borderRadius: 8,
+  },
+  buttonText: {
+    color: '#FE6E00',
+    fontSize: 14,
+  },
 });
