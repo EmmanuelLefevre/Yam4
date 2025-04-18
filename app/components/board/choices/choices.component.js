@@ -57,9 +57,9 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "space-between",
     paddingHorizontal: 10,
-    borderBottomWidth: 1,
-    borderColor: "black",
-    backgroundColor: "lightgrey"
+    // borderBottomWidth: 1,
+    // borderColor: "black",
+    // backgroundColor: "lightgrey"
   },
   choiceButton: {
     backgroundColor: "white",
