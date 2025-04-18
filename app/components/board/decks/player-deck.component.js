@@ -70,7 +70,9 @@ const PlayerDeck = () => {
 
           {displayRollButton && (
             <>
-              <TouchableOpacity style={ styles.rollButton } onPress={ rollDices }>
+              <TouchableOpacity
+                style={ styles.customButton }
+                onPress={ rollDices }>
                 <Text style={ styles.rollButtonText }>Roll</Text>
               </TouchableOpacity>
             </>
@@ -110,18 +112,19 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     marginBottom: 10,
   },
-  rollButton: {
-    width: 80,
-    height: 30,
+  customButton: {
+    alignItems: 'center',
+    width: 150,
+    marginVertical: 10,
     paddingVertical: 10,
-    borderRadius: 5,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#FE6E00"
+    backgroundColor: '#FFF',
+    borderWidth: 2,
+    borderColor: '#FE6E00',
+    borderRadius: 8,
   },
   rollButtonText: {
     fontSize: 14,
-    color: "white",
+    color: '#FE6E00',
     fontWeight: "bold",
   },
 });
