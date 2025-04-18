@@ -22,12 +22,12 @@ const Dice = ({ index, locked, value, onPress, opponent }) => {
 
 const styles = StyleSheet.create({
   dice: {
+    justifyContent: "center",
+    alignItems: "center",
     width: 40,
     height: 40,
     backgroundColor: "lightblue",
     borderRadius: 5,
-    justifyContent: "center",
-    alignItems: "center",
   },
   lockedDice: {
     backgroundColor: "gray",
