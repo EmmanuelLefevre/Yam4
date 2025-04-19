@@ -1,5 +1,5 @@
 const TURN_DURATION = 60;
-const GET_END_TURN_DURATION = 20;
+const GET_END_TURN_DURATION = 15;
 
 const DECK_INIT = {
   dices: [
