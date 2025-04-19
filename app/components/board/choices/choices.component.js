@@ -35,12 +35,12 @@ const Choices = () => {
       {displayChoices &&
         availableChoices.map((choice) => (
           <TouchableOpacity
-            key={choice.id}
+            key={ choice.id }
             style={[
               styles.choiceButton,
               idSelectedChoice === choice.id && styles.selectedChoice,
               !canMakeChoice && styles.disabledChoice]}
-            onPress={() => handleSelectChoice(choice.id)}
+            onPress={ () => handleSelectChoice(choice.id) }
             disabled={ !canMakeChoice }>
             <Text style={ styles.choiceText }>{ choice.value }</Text>
           </TouchableOpacity>
@@ -57,9 +57,8 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "space-between",
     paddingHorizontal: 10,
-    // borderBottomWidth: 1,
-    // borderColor: "black",
-    // backgroundColor: "lightgrey"
+    borderLeftWidth: 2,
+    borderColor: "#E66E15"
   },
   choiceButton: {
     backgroundColor: "white",
@@ -71,9 +70,10 @@ const styles = StyleSheet.create({
     height: "10%"
   },
   selectedChoice: {
-    backgroundColor: "lightgreen",
+    backgroundColor: "#8AB70E",
   },
   choiceText: {
+    color: "#E66E15",
     fontSize: 13,
     fontWeight: "bold",
   },
