@@ -60,9 +60,9 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   row: {
-    height: 20,
     flexDirection: 'row',
-    width: '100%'
+    width: '100%',
+    height: 20
   },
   playerTimerScoreContainer: {
     flex: 2,
