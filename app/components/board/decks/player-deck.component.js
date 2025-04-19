@@ -41,6 +41,18 @@ const PlayerDeck = () => {
     }
   };
 
+  const getCounterColor = (counter) => {
+    switch (counter) {
+      case 0:
+        return { color: '#FF0000' };
+      case 1:
+        return { color: '#8AB70E' };
+      case 2:
+      default:
+        return { color: '#E66E15' };
+    }
+  };
+
   return (
     <View style={ styles.deckPlayerContainer }>
 
@@ -50,7 +62,7 @@ const PlayerDeck = () => {
             <>
               <View style={ styles.rollInfoContainer }>
                 <Text style={ styles.rollInfoText }>
-                  Lancer { rollsCounter } / { rollsMaximum }
+                  Lancer <Text style={ getCounterColor(rollsCounter, rollsMaximum) }>{ rollsCounter }</Text> / { rollsMaximum }
                 </Text>
               </View>
             </>
@@ -103,8 +115,10 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   rollInfoText: {
+    color: "#E66E15",
     fontSize: 14,
-    fontStyle: "italic"
+    fontStyle: "italic",
+    fontWeight: 'bold'
   },
   diceContainer: {
     flexDirection: "row",
