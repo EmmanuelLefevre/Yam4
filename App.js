@@ -28,9 +28,18 @@ function App() {
                 fontWeight: 'bold',
               }
             }}>
-            <Stack.Screen name="HomeScreen" component={ HomeScreen } />
-            <Stack.Screen name="VsBotGameScreen" component={ VsBotGameScreen } />
-            <Stack.Screen name="OnlineGameScreen" component={ OnlineGameScreen } />
+            <Stack.Screen
+              name="HomeScreen"
+              component={ HomeScreen }
+              options={{ title: 'Accueil' }}/>
+            <Stack.Screen
+              name="VsBotGameScreen"
+              component={ VsBotGameScreen }
+              options={{ title: 'Ecran de jeu Vs bot' }}/>
+            <Stack.Screen
+              name="OnlineGameScreen"
+              component={ OnlineGameScreen }
+              options={{ title: 'Ecran de jeu' }}/>
           </Stack.Navigator>
         </NavigationContainer>
     </SocketContext.Provider>
