@@ -75,10 +75,10 @@ const styles = StyleSheet.create({
   choiceText: {
     color: "#E66E15",
     fontSize: 13,
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
   disabledChoice: {
-    opacity: 0.5,
+    opacity: 0.5
   },
 });
 
