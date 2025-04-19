@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     width: '100%',
     // borderBottomWidth: 2,
     // borderTopWidth: 2,
-    // borderColor: '#FE6E00',
+    // borderColor: #E66E15',
   },
   playerTimerScoreContainer: {
     flex: 2,
