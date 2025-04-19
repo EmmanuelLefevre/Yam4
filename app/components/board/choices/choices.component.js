@@ -52,10 +52,11 @@ const Choices = () => {
 
 const styles = StyleSheet.create({
   choicesContainer: {
-    flex: 1,
+    flex: 2,
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
+    paddingVertical: 20,
     paddingHorizontal: 10,
     borderLeftWidth: 2,
     borderColor: "#E66E15"
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
   },
   choiceText: {
     color: "#E66E15",
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: "bold"
   },
   disabledChoice: {
