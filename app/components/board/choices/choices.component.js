@@ -33,19 +33,29 @@ const Choices = () => {
   return (
     <View style={ styles.choicesContainer }>
       {displayChoices &&
-        availableChoices.map((choice) => (
-          <TouchableOpacity
-            key={ choice.id }
-            style={[
-              styles.choiceButton,
-              idSelectedChoice === choice.id && styles.selectedChoice,
-              !canMakeChoice && styles.disabledChoice]}
-            onPress={ () => handleSelectChoice(choice.id) }
-            disabled={ !canMakeChoice }>
-            <Text style={ styles.choiceText }>{ choice.value }</Text>
-          </TouchableOpacity>
-        ))
-      }
+        availableChoices.map((choice) => {
+          const isSelected = idSelectedChoice === choice.id;
+
+          return (
+            <TouchableOpacity
+              key={ choice.id }
+              style={[
+                styles.choiceButton,
+                isSelected && styles.selectedChoice,
+                !canMakeChoice && styles.disabledChoice,
+              ]}
+              onPress={ () => handleSelectChoice(choice.id) }
+              disabled={ !canMakeChoice }>
+              <Text
+                style={[
+                  styles.choiceText,
+                  isSelected && styles.selectedChoiceText,
+                ]}>
+                { choice.value }
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
     </View>
   );
 };
@@ -57,7 +67,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     justifyContent: "space-between",
     paddingVertical: 20,
-    paddingHorizontal: 10,
+    paddingHorizontal: 50,
     borderLeftWidth: 2,
     borderColor: "#E66E15"
   },
@@ -71,7 +81,10 @@ const styles = StyleSheet.create({
     height: "10%"
   },
   selectedChoice: {
-    backgroundColor: "#8AB70E",
+    backgroundColor: "#E66E15"
+  },
+  selectedChoiceText: {
+    color: "#FFF",
   },
   choiceText: {
     color: "#E66E15",
