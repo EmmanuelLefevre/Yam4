@@ -29,8 +29,7 @@ const OpponentDeck = () => {
               key={ index }
               locked={ diceData.locked }
               value={ diceData.value }
-              opponent={ true }
-            />
+              opponent={ true }/>
           ))}
         </View>
       )}
@@ -43,15 +42,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    // borderBottomWidth: 1,
-    // borderColor: "black"
+    borderBottomWidth: 2,
+    borderColor: "#E66E15"
   },
   diceContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "70%",
-    marginBottom: 10,
-  },
+    width: "70%"
+  }
 });
 
 export default OpponentDeck;
