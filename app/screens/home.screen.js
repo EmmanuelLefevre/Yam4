@@ -63,12 +63,12 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     backgroundColor: '#FFF',
     borderWidth: 2,
-    borderColor: '#FE6E00',
+    borderColor: '#E66E15',
     borderRadius: 8,
   },
   buttonText: {
     fontSize: 15,
-    color: '#FE6E00',
+    color: '#E66E15',
     fontWeight: "bold",
   },
 });
