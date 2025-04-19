@@ -7,7 +7,6 @@ import OnlineGameController from "../controllers/online-game.controller";
 
 
 export default function OnlineGameScreen({ navigation }) {
-
   const socket = useContext(SocketContext);
 
   return (
