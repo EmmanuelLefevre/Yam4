@@ -15,10 +15,15 @@ const OpponentTimer = () => {
     });
 
   }, []);
+
+  const timerValueStyle = opponentTimer < 15
+    ? styles.opponentTimerRed
+    : styles.opponentTimerGreen;
+
   return (
     <View style={ styles.opponentTimerContainer }>
       <Text style={ styles.opponentTimer }>
-        Timer : <Text style={ styles.opponentTimerValue }>{ opponentTimer }</Text>
+        Timer : <Text style={ timerValueStyle }>{ opponentTimer }</Text>
       </Text>
     </View>
   );
@@ -35,8 +40,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold'
   },
-  opponentTimerValue: {
-    color: "#15A9E6"
+  opponentTimerGreen: {
+    color: "#8AB70E",
+    fontWeight: 'bold'
+  },
+  opponentTimerRed: {
+    color: "#FF0000",
+    fontWeight: 'bold'
   }
 })
 
