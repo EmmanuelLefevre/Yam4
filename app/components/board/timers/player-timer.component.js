@@ -14,10 +14,14 @@ const PlayerTimer = () => {
     });
   }, []);
 
+  const timerValueStyle = playerTimer < 15
+    ? styles.playerTimerRed
+    : styles.playerTimerGreen;
+
   return (
     <View style={ styles.playerTimerContainer }>
       <Text style={ styles.playerTimer }>
-        Timer : <Text style={ styles.playerTimerValue }>{ playerTimer }</Text>
+        Timer : <Text style={ timerValueStyle }>{ playerTimer }</Text>
       </Text>
     </View>
   );
@@ -34,8 +38,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold'
   },
-  playerTimerValue: {
-    color: "#15A9E6"
+  playerTimerGreen: {
+    color: "#8AB70E",
+    fontWeight: 'bold'
+  },
+  playerTimerRed: {
+    color: "#FF0000",
+    fontWeight: 'bold'
   }
 })
 
