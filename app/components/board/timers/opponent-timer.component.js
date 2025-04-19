@@ -9,7 +9,6 @@ const OpponentTimer = () => {
   const [opponentTimer, setOpponentTimer] = useState(0);
 
   useEffect(() => {
-
     socket.on("game.timer", (data) => {
       setOpponentTimer(data['opponentTimer'])
     });
