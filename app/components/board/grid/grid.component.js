@@ -58,16 +58,14 @@ const styles = StyleSheet.create({
     flex: 7,
     justifyContent: 'center',
     alignItems: 'center',
-    flexDirection: "column",
-    // borderRightWidth: 2,
-    // borderColor: #E66E15',
+    flexDirection: "column"
   },
   row: {
     flexDirection: "row",
     flex: 1,
     width: "100%",
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
   },
   cell: {
     flexDirection: "row",
@@ -77,28 +75,28 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 1,
-    borderColor: "black",
+    borderColor: "black"
   },
   cellText: {
-    fontSize: 11,
+    fontSize: 11
   },
   playerOwnedCell: {
     backgroundColor: "lightgreen",
-    opacity: 0.9,
+    opacity: 0.9
   },
   opponentOwnedCell: {
     backgroundColor: "lightcoral",
-    opacity: 0.9,
+    opacity: 0.9
   },
   canBeCheckedCell: {
-    backgroundColor: "lightyellow",
+    backgroundColor: "lightyellow"
   },
   topBorder: {
-    borderTopWidth: 1,
+    borderTopWidth: 1
   },
   leftBorder: {
-    borderLeftWidth: 1,
-  },
+    borderLeftWidth: 1
+  }
 });
 
 export default Grid;
