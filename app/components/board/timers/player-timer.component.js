@@ -16,7 +16,9 @@ const PlayerTimer = () => {
 
   return (
     <View style={ styles.playerTimerContainer }>
-      <Text>Timer: { playerTimer }</Text>
+      <Text style={ styles.playerTimer }>
+        Timer : <Text style={ styles.playerTimerValue }>{ playerTimer }</Text>
+      </Text>
     </View>
   );
 };
@@ -25,16 +27,16 @@ const styles = StyleSheet.create({
   playerTimerContainer: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    // backgroundColor: "lightgrey"
+    alignItems: 'center'
   },
-  playerTimerScoreContainer: {
-    flex: 3,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    // backgroundColor: "lightgrey"
+  playerTimer: {
+    color: "#E66E15",
+    fontSize: 14,
+    fontWeight: 'bold'
   },
+  playerTimerValue: {
+    color: "#15A9E6"
+  }
 })
 
 export default PlayerTimer;
