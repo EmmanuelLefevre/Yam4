@@ -100,17 +100,17 @@ const styles = StyleSheet.create({
     borderColor: "#E66E15"
   },
   rollInfoContainer: {
-    marginBottom: 10,
+    marginBottom: 10
   },
   rollInfoText: {
     fontSize: 14,
-    fontStyle: "italic",
+    fontStyle: "italic"
   },
   diceContainer: {
     flexDirection: "row",
     width: "70%",
     justifyContent: "space-between",
-    marginBottom: 10,
+    margin: 20
   },
   customButton: {
     alignItems: 'center',
@@ -120,12 +120,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     borderWidth: 2,
     borderColor: '#E66E15',
-    borderRadius: 8,
+    borderRadius: 8
   },
   rollButtonText: {
     fontSize: 15,
     color: '#E66E15',
-    fontWeight: "bold",
+    fontWeight: "bold"
   },
 });
 
