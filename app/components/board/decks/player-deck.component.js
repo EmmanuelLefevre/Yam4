@@ -90,14 +90,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     // borderBottomWidth: 1,
-    // borderColor: "#FE6E00"
+    // borderColor: "#E66E15"
   },
   deckOpponentContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     // borderBottomWidth: 1,
-    // borderColor: "#FE6E00"
+    // borderColor: "#E66E15"
   },
   rollInfoContainer: {
     marginBottom: 10,
@@ -119,12 +119,12 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     backgroundColor: '#FFF',
     borderWidth: 2,
-    borderColor: '#FE6E00',
+    borderColor: '#E66E15',
     borderRadius: 8,
   },
   rollButtonText: {
     fontSize: 15,
-    color: '#FE6E00',
+    color: '#E66E15',
     fontWeight: "bold",
   },
 });
