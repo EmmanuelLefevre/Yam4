@@ -16,6 +16,7 @@ import PlayerTimer from './timers/player-timer.component';
 const Board = ({ gameViewState}) => {
   return (
     <View style={ styles.container }>
+
       <View style={ [styles.row, { height: '10%' }] }>
         <OpponentInfos />
         <View style={ styles.opponentTimerScoreContainer }>
@@ -23,16 +24,20 @@ const Board = ({ gameViewState}) => {
           <OpponentScore />
         </View>
       </View>
+
       <View style={ [styles.row, { height: '15%' }] }>
         <OpponentDeck />
       </View>
+
       <View style={ [styles.row, { height: '40%' }] }>
         <Grid />
         <Choices />
       </View>
+
       <View style={ [styles.row, { height: '25%' }] }>
         <PlayerDeck />
       </View>
+
       <View style={ [styles.row, { height: '10%' }] }>
         <PlayerInfos />
         <View style={ styles.playerTimerScoreContainer }>
@@ -40,6 +45,7 @@ const Board = ({ gameViewState}) => {
           <PlayerScore />
         </View>
       </View>
+
     </View>
   );
 };
