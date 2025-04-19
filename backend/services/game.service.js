@@ -130,8 +130,8 @@ const GameService = {
 
       viewQueueStateLeave: () => {
         return {
-            inQueue: false,
-            inGame: false,
+          inQueue: false,
+          inGame: false,
         };
       },
 
