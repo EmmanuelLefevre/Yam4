@@ -35,5 +35,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#FFF",
+  },
+  paragraph: {
+    fontSize: 16,
+  },
+  footnote: {
+    fontSize: 14,
   }
 });
