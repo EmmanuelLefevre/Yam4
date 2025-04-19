@@ -16,13 +16,23 @@ LogBox.ignoreAllLogs(true);
 function App() {
   return (
     <SocketContext.Provider value={ socket }>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="HomeScreen">
-          <Stack.Screen name="HomeScreen" component={ HomeScreen } />
-          <Stack.Screen name="VsBotGameScreen" component={ VsBotGameScreen } />
-          <Stack.Screen name="OnlineGameScreen" component={ OnlineGameScreen } />
-        </Stack.Navigator>
-      </NavigationContainer>
+        <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="HomeScreen"
+            screenOptions={{
+              headerStyle: {
+                backgroundColor: '#FE6E00',
+              },
+              headerTintColor: '#FFF',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              }
+            }}>
+            <Stack.Screen name="HomeScreen" component={ HomeScreen } />
+            <Stack.Screen name="VsBotGameScreen" component={ VsBotGameScreen } />
+            <Stack.Screen name="OnlineGameScreen" component={ OnlineGameScreen } />
+          </Stack.Navigator>
+        </NavigationContainer>
     </SocketContext.Provider>
   );
 }
