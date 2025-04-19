@@ -17,7 +17,9 @@ const OpponentTimer = () => {
   }, []);
   return (
     <View style={ styles.opponentTimerContainer }>
-      <Text>Timer: { opponentTimer }</Text>
+      <Text style={ styles.opponentTimer }>
+        Timer : <Text style={ styles.opponentTimerValue }>{ opponentTimer }</Text>
+      </Text>
     </View>
   );
 };
@@ -26,15 +28,16 @@ const styles = StyleSheet.create({
   opponentTimerContainer: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
-  opponentTimerScoreContainer: {
-    flex: 3,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    // backgroundColor: "lightgrey"
+  opponentTimer: {
+    color: "#E66E15",
+    fontSize: 14,
+    fontWeight: 'bold'
   },
+  opponentTimerValue: {
+    color: "#15A9E6"
+  }
 })
 
 export default OpponentTimer;
