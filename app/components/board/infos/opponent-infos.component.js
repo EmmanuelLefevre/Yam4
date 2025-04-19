@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 const OpponentInfos = () => {
   return (
     <View style={ styles.opponentInfosContainer }>
-      <Text>Opponent</Text>
+      <Text style={ styles.opponentText }>Opponent</Text>
     </View>
   );
 };
@@ -14,9 +14,14 @@ const styles = StyleSheet.create({
     flex: 7,
     justifyContent: 'center',
     alignItems: 'center',
-    // borderRightWidth: 1,
-    // borderColor: 'black',
-    // backgroundColor: "lightgrey"
+    borderRightWidth: 2,
+    borderBottomWidth: 2,
+    borderColor: "#E66E15"
+  },
+  opponentText: {
+    color: "#E66E15",
+    fontSize: 14,
+    fontWeight: 'bold'
   }
 });
 
