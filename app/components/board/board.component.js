@@ -51,29 +51,28 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    height: '100%',
+    height: '100%'
   },
   row: {
     height: 20,
     flexDirection: 'row',
-    width: '100%',
-    // borderBottomWidth: 2,
-    // borderTopWidth: 2,
-    // borderColor: #E66E15',
+    width: '100%'
   },
   playerTimerScoreContainer: {
     flex: 2,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: "lightgrey"
+    borderTopWidth: 2,
+    borderColor: "#E66E15"
   },
   opponentTimerScoreContainer: {
     flex: 2,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: "lightgrey"
+    borderBottomWidth: 2,
+    borderColor: "#E66E15"
   }
 });
 
