@@ -70,12 +70,12 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     shadowColor: '#000',
     shadowOffset: {
-      width: 6,
-      height: 6
+      width: 5,
+      height: 5
     },
     shadowOpacity: 0.4,
     shadowRadius: 6,
-    elevation: 8
+    elevation: 6
   },
   buttonText: {
     fontSize: 15,
