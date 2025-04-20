@@ -128,19 +128,19 @@ const styles = StyleSheet.create({
   },
   customButton: {
     alignItems: 'center',
-    width: 80,
+    width: 130,
     marginVertical: 10,
-    paddingVertical: 8,
-    backgroundColor: '#FFF',
-    borderWidth: 2,
-    borderColor: '#E66E15',
-    borderRadius: 8
+    paddingVertical: 10,
+    backgroundColor: '#13171A',
+    borderWidth: 1,
+    borderColor: '#ED6A11',
+    borderRadius: 25
   },
   rollButtonText: {
     fontSize: 15,
-    color: '#E66E15',
+    color: '#6B6F73',
     fontWeight: "bold"
-  },
+  }
 });
 
 export default PlayerDeck;
