@@ -66,7 +66,7 @@ const Dice = ({ index, locked, value, onPress, opponent }) => {
         setHasAnimatedEntry(true);
       });
     }
-  }, [hasAnimatedEntry]);
+  }, [hasAnimatedEntry, index]);
 
   useEffect(() => {
     if (isFirstRender || !hasAnimatedEntry) return;
