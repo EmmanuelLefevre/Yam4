@@ -62,7 +62,7 @@ const Choices = () => {
 
 const styles = StyleSheet.create({
   choicesContainer: {
-    flex: 2,
+    flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",

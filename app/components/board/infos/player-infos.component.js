@@ -12,8 +12,8 @@ const PlayerInfos = () => {
 const styles = StyleSheet.create({
   playerInfosContainer: {
     flex: 7,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     borderRightWidth: 2,
     borderTopWidth: 2,
     borderColor: "#E66E15"
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   playerText: {
     color: "#E66E15",
     fontSize: 14,
-    fontWeight: 'bold'
+    fontWeight: "bold"
   }
 });
 

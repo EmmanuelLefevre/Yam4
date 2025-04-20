@@ -74,15 +74,15 @@ const styles = StyleSheet.create({
     margin: 20
   },
   customButton: {
-    alignItems: 'center',
+    alignItems: "center",
     width: 160,
     marginVertical: 10,
     paddingVertical: 10,
-    backgroundColor: '#13171A',
+    backgroundColor: "#13171A",
     borderWidth: 1,
-    borderColor: '#FF0000',
+    borderColor: "#FF0000",
     borderRadius: 25,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 5,
       height: 5
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 15,
-    color: '#6B6F73',
+    color: "#6B6F73",
     fontWeight: "bold",
     letterSpacing: 0.5
   }
