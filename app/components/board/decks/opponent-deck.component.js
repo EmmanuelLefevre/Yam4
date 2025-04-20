@@ -8,6 +8,7 @@ import Dice from "./dice.component";
 
 const OpponentDeck = () => {
   const socket = useContext(SocketContext);
+
   const [displayOpponentDeck, setDisplayOpponentDeck] = useState(false);
   const [opponentDices, setOpponentDices] = useState(Array(5).fill({ value: "", locked: false }));
 
