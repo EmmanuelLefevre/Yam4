@@ -84,7 +84,10 @@ const Dice = ({ index, locked, value, onPress, opponent }) => {
   });
 
   return (
-    <TouchableOpacity onPress={ handlePress } disabled={ opponent || isInitial || !hasAnimatedEntry }>
+    <TouchableOpacity
+      onPress={ handlePress }
+      disabled={ opponent || isInitial || !hasAnimatedEntry }>
+
       <Animated.View
         style={[
           styles.dice,
@@ -112,6 +115,7 @@ const Dice = ({ index, locked, value, onPress, opponent }) => {
           {isInitial ? "?" : value}
         </Text>
       </Animated.View>
+
     </TouchableOpacity>
   );
 };
