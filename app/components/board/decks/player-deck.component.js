@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import { SocketContext } from "../../../contexts/socket.context";
 
@@ -135,14 +135,21 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ED6A11",
     borderRadius: 25,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 5,
-      height: 5
-    },
-    shadowOpacity: 0.4,
-    shadowRadius: 6,
-    elevation: 6
+    elevation: 6,
+    ...(Platform.OS === "web"
+      ? {
+          boxShadow: "5px 5px 6px rgba(0, 0, 0, 0.4)"
+        }
+      : {
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 5,
+            height: 5
+          },
+          shadowOpacity: 0.4,
+          shadowRadius: 6
+        }
+    )
   },
   rollButtonText: {
     fontSize: 15,

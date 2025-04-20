@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Animated, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Animated, Platform, StyleSheet, Text, TouchableOpacity } from "react-native";
 
 
 const Dice = ({ index, locked, value, onPress, opponent }) => {
@@ -28,40 +28,40 @@ const Dice = ({ index, locked, value, onPress, opponent }) => {
         Animated.timing(translateXAnim, {
           toValue: 0,
           duration: 700 + index * 100,
-          useNativeDriver: true,
+          useNativeDriver: false
         }),
         Animated.sequence([
           Animated.timing(translateYAnim, {
             toValue: 30,
             duration: 300,
-            useNativeDriver: true,
+            useNativeDriver: false
           }),
           Animated.timing(translateYAnim, {
             toValue: -20,
             duration: 120,
-            useNativeDriver: true,
+            useNativeDriver: false
           }),
           Animated.timing(translateYAnim, {
             toValue: 10,
             duration: 100,
-            useNativeDriver: true,
+            useNativeDriver: false
           }),
           Animated.timing(translateYAnim, {
             toValue: -5,
             duration: 80,
-            useNativeDriver: true,
+            useNativeDriver: false
           }),
           Animated.timing(translateYAnim, {
             toValue: 0,
             duration: 80,
-            useNativeDriver: true,
+            useNativeDriver: false
           }),
         ]),
         Animated.timing(rotateAnim, {
           toValue: 1,
           duration: 800,
-          useNativeDriver: true,
-        }),
+          useNativeDriver: false
+        })
       ]).start(() => {
         setHasAnimatedEntry(true);
       });
@@ -74,13 +74,13 @@ const Dice = ({ index, locked, value, onPress, opponent }) => {
     Animated.spring(scaleAnim, {
       toValue: locked ? 1.2 : 1,
       friction: 3,
-      useNativeDriver: true
+      useNativeDriver: false
     }).start();
   }, [locked, isFirstRender, hasAnimatedEntry]);
 
   const rotateInterpolate = rotateAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: ["0deg", "720deg"],
+    outputRange: ["0deg", "720deg"]
   });
 
   return (
@@ -93,7 +93,7 @@ const Dice = ({ index, locked, value, onPress, opponent }) => {
               { scale: scaleAnim },
               { translateX: translateXAnim },
               { translateY: translateYAnim },
-              { rotate: rotateInterpolate },
+              { rotate: rotateInterpolate }
             ]
           },
           isInitial && styles.initialDice,
@@ -107,7 +107,7 @@ const Dice = ({ index, locked, value, onPress, opponent }) => {
               ? styles.initialDiceText
               : locked
               ? styles.lockedDiceText
-              : null,
+              : null
           ]}>
           {isInitial ? "?" : value}
         </Text>
@@ -127,14 +127,21 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ED6A11",
     borderRadius: 5,
-    boxShadowColor: "#000",
-    boxShadowOffset: {
-      width: 5,
-      height: 5
-    },
-    boxShadowOpacity: 0.4,
-    boxShadowRadius: 6,
-    elevation: 6
+    elevation: 6,
+    ...(Platform.OS === "web"
+      ? {
+          boxShadow: "5px 5px 6px rgba(0, 0, 0, 0.4)"
+        }
+      : {
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 5,
+            height: 5
+          },
+          shadowOpacity: 0.4,
+          shadowRadius: 6
+        }
+    )
   },
   initialDice: {
     borderWidth: 1,
