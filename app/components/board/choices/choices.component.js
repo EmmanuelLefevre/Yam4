@@ -65,35 +65,46 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-between",
+    justifyContent: "center",
+    alignItems: "center",
     paddingVertical: 20,
     paddingHorizontal: 50,
     borderLeftWidth: 2,
     borderColor: "#E66E15"
   },
   choiceButton: {
-    backgroundColor: "white",
-    borderRadius: 5,
-    marginVertical: 5,
     alignItems: "center",
     justifyContent: "center",
-    width: "100%",
-    height: "10%"
+    width: 110,
+    height: 40,
+    backgroundColor: "#13171A",
+    borderWidth: 1,
+    borderColor: "#ED6A11",
+    borderRadius: 25,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 5,
+      height: 5
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 6,
+    elevation: 6
   },
   selectedChoice: {
     backgroundColor: "#E66E15"
   },
   selectedChoiceText: {
-    color: "#FFF",
+    color: "#FFF"
   },
   choiceText: {
-    color: "#E66E15",
     fontSize: 14,
-    fontWeight: "bold"
+    color: "#6B6F73",
+    fontWeight: "bold",
+    letterSpacing: 0.5
   },
   disabledChoice: {
     opacity: 0.5
-  },
+  }
 });
 
 export default Choices;
