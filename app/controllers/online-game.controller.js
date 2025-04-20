@@ -66,7 +66,7 @@ export default function OnlineGameController() {
               style={ styles.customButton }
               onPress={ leftQueue }>
               <Text style={ styles.buttonText }>
-                Quitter la file d'attente
+                Leave queue
               </Text>
             </TouchableOpacity>
           </View>
@@ -89,27 +89,29 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: '100%',
     height: '100%',
-    backgroundColor: "#FFF",
+    backgroundColor: "#24282C"
   },
   paragraph: {
+    color: "#6B6F73",
     fontSize: 16,
+    fontWeight: "bold"
   },
   buttonContainer: {
     margin: 20
   },
   customButton: {
     alignItems: 'center',
-    width: 190,
+    width: 130,
     marginVertical: 10,
     paddingVertical: 10,
-    backgroundColor: '#FFF',
-    borderWidth: 2,
+    backgroundColor: '#13171A',
+    borderWidth: 1,
     borderColor: '#FF0000',
-    borderRadius: 8,
+    borderRadius: 25
   },
   buttonText: {
     fontSize: 15,
-    color: '#FF0000',
-    fontWeight: "bold",
-  },
+    color: '#6B6F73',
+    fontWeight: "bold"
+  }
 });
