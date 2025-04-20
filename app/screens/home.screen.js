@@ -70,5 +70,5 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#6B6F73',
     fontWeight: "bold"
-  },
+  }
 });
