@@ -134,12 +134,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#13171A',
     borderWidth: 1,
     borderColor: '#ED6A11',
-    borderRadius: 25
+    borderRadius: 25,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 5,
+      height: 5
+    },
+    shadowOpacity: 0.4,
+    shadowRadius: 6,
+    elevation: 6
   },
   rollButtonText: {
     fontSize: 15,
     color: '#6B6F73',
-    fontWeight: "bold"
+    fontWeight: "bold",
+    letterSpacing: 0.5
   }
 });
 
