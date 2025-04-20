@@ -13,12 +13,14 @@ export default function OnlineGameScreen({ navigation }) {
     <View style={ styles.container }>
       {!socket && (
         <>
-          <Text style={ styles.paragraph }>
-            No connection with server...
-          </Text>
-          <Text style={ styles.footnote }>
-            Restart the app and wait for the server to be back again.
-          </Text>
+          <View style={ styles.textContainer }>
+            <Text style={ styles.paragraph }>
+              No connection with server...
+            </Text>
+            <Text style={ styles.footnote }>
+              Restart the app and wait for the server to be back again.
+            </Text>
+          </View>
         </>
       )}
 
@@ -36,6 +38,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#24282C",
   },
+  textContainer: {
+    justifyContent: "center",
+    alignItems: "center"
+  },
   paragraph: {
     color: "#6B6F73",
     fontSize: 16,
@@ -44,6 +50,7 @@ const styles = StyleSheet.create({
   footnote: {
     color: "#6B6F73",
     fontSize: 14,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    marginTop: 5
   }
 });
