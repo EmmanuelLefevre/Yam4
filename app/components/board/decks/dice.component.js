@@ -97,7 +97,7 @@ const Dice = ({ index, locked, value, onPress, opponent }) => {
             ]
           },
           isInitial && styles.initialDice,
-          locked && styles.lockedDice,
+          locked && styles.lockedDice
         ]}>
 
         <Text
