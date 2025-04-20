@@ -46,6 +46,7 @@ const Choices = () => {
               ]}
               onPress={ () => handleSelectChoice(choice.id) }
               disabled={ !canMakeChoice }>
+
               <Text
                 style={[
                   styles.choiceText,
