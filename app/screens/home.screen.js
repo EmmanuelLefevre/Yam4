@@ -17,14 +17,14 @@ export default function HomeScreen({ navigation }) {
           <TouchableOpacity
             style={ styles.customButton }
             onPress={ () => navigation.navigate('OnlineGameScreen') }>
-            <Text style={ styles.buttonText }>Jouer en ligne</Text>
+            <Text style={ styles.buttonText }>Play online</Text>
           </TouchableOpacity>
         </View>
         <View style={ styles.buttonWrapper }>
           <TouchableOpacity
             style={ styles.customButton }
             onPress={ () => navigation.navigate('VsBotGameScreen') }>
-            <Text style={ styles.buttonText }>Jouer contre le bot</Text>
+            <Text style={ styles.buttonText }>Play vs bot</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -39,36 +39,36 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     paddingVertical: 40,
-    backgroundColor: '#FFF',
+    backgroundColor: '#24282C'
   },
   logoContainer: {
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
     height: screenHeight * 0.3,
-    marginTop: 50,
+    marginTop: 50
   },
   logo: {
     width: "100%",
-    height: "100%",
+    height: "100%"
   },
   buttonContainer: {
     alignItems: 'center',
-    marginBottom: 30,
+    marginBottom: 30
   },
   customButton: {
     alignItems: 'center',
-    width: 160,
+    width: 130,
     marginVertical: 10,
     paddingVertical: 10,
-    backgroundColor: '#FFF',
-    borderWidth: 2,
-    borderColor: '#E66E15',
-    borderRadius: 8,
+    backgroundColor: '#13171A',
+    borderWidth: 1,
+    borderColor: '#ED6A11',
+    borderRadius: 25
   },
   buttonText: {
     fontSize: 15,
-    color: '#E66E15',
-    fontWeight: "bold",
+    color: '#6B6F73',
+    fontWeight: "bold"
   },
 });
