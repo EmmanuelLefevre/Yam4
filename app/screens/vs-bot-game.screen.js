@@ -51,9 +51,9 @@ export default function VsBotGameScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#24282C",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: "#24282C",
   },
   textContainer: {
     alignItems: "center",
