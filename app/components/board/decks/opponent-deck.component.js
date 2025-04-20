@@ -28,6 +28,7 @@ const OpponentDeck = () => {
           {opponentDices.map((diceData, index) => (
             <Dice
               key={ index }
+              index={ index }
               locked={ diceData.locked }
               value={ diceData.value }
               opponent={ true }/>
