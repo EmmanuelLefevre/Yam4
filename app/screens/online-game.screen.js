@@ -34,12 +34,16 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#FFF",
+    backgroundColor: "#24282C",
   },
   paragraph: {
+    color: "#6B6F73",
     fontSize: 16,
+    fontWeight: "bold"
   },
   footnote: {
+    color: "#6B6F73",
     fontSize: 14,
+    fontWeight: "bold"
   }
 });
