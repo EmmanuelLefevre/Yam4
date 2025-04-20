@@ -10,7 +10,7 @@ const Dice = ({ index, locked, value, onPress, opponent }) => {
     }
   };
 
-  const isInitial = value === null || value === undefined || isNaN(value);
+  const isInitial = !(value >= 1 && value <= 6);
 
   return (
     <TouchableOpacity
@@ -25,9 +25,12 @@ const Dice = ({ index, locked, value, onPress, opponent }) => {
       <Text
         style={[
           styles.diceText,
-          isInitial && styles.initialDiceText,
-          locked && styles.lockedDiceText
-      ]}>
+          isInitial
+            ? styles.initialDiceText
+            : locked
+            ? styles.lockedDiceText
+            : null
+        ]}>
         { isInitial ? "?" : value }
       </Text>
     </TouchableOpacity>
@@ -55,20 +58,19 @@ const styles = StyleSheet.create({
     elevation: 6
   },
   initialDice: {
-    backgroundColor: "red",
     borderWidth: 1,
-    borderColor: "#555"
+    borderColor: "#FF0000"
   },
   lockedDice: {
     backgroundColor: "#ED6A11"
   },
   diceText: {
-    fontSize: 20,
+    fontSize: 18,
     color: "#6B6F73",
     fontWeight: "bold"
   },
   initialDiceText: {
-    color: "red"
+    color: "#FFF"
   },
   lockedDiceText: {
     color: "#FFF"
