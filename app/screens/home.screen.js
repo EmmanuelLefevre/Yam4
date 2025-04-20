@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     marginBottom: 30
   },
   buttonWrapper: {
-    marginVertical: 10
+    marginVertical: 2
   },
   customButton: {
     alignItems: 'center',
