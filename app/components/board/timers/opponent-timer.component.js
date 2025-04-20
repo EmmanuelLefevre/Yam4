@@ -31,21 +31,21 @@ const OpponentTimer = () => {
 const styles = StyleSheet.create({
   opponentTimerContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center"
   },
   opponentTimer: {
     color: "#E66E15",
     fontSize: 14,
-    fontWeight: 'bold'
+    fontWeight: "bold"
   },
   opponentTimerGreen: {
     color: "#8AB70E",
-    fontWeight: 'bold'
+    fontWeight: "bold"
   },
   opponentTimerRed: {
     color: "#FF0000",
-    fontWeight: 'bold'
+    fontWeight: "bold"
   }
 })
 

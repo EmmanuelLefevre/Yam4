@@ -37,9 +37,9 @@ const { height: screenHeight } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     paddingVertical: 40,
-    backgroundColor: '#24282C'
+    backgroundColor: "#24282C"
   },
   logoContainer: {
     justifyContent: "center",
@@ -53,22 +53,22 @@ const styles = StyleSheet.create({
     height: "100%"
   },
   buttonContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: 30
   },
   buttonWrapper: {
     marginVertical: 2
   },
   customButton: {
-    alignItems: 'center',
+    alignItems: "center",
     width: 130,
     marginVertical: 10,
     paddingVertical: 10,
-    backgroundColor: '#13171A',
+    backgroundColor: "#13171A",
     borderWidth: 1,
-    borderColor: '#ED6A11',
+    borderColor: "#ED6A11",
     borderRadius: 25,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: {
       width: 5,
       height: 5
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 15,
-    color: '#6B6F73',
+    color: "#6B6F73",
     fontWeight: "bold",
     letterSpacing: 0.5
   }

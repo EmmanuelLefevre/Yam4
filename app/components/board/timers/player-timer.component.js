@@ -30,21 +30,21 @@ const PlayerTimer = () => {
 const styles = StyleSheet.create({
   playerTimerContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center"
   },
   playerTimer: {
     color: "#E66E15",
     fontSize: 14,
-    fontWeight: 'bold'
+    fontWeight: "bold"
   },
   playerTimerGreen: {
     color: "#8AB70E",
-    fontWeight: 'bold'
+    fontWeight: "bold"
   },
   playerTimerRed: {
     color: "#FF0000",
-    fontWeight: 'bold'
+    fontWeight: "bold"
   }
 })
 

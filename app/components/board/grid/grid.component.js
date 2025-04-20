@@ -56,8 +56,8 @@ const Grid = () => {
 const styles = StyleSheet.create({
   gridContainer: {
     flex: 7,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     flexDirection: "column"
   },
   row: {

@@ -12,13 +12,13 @@ const OpponentScore = () => {
 const styles = StyleSheet.create({
   opponentScoreContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   opponentScore: {
     color: "#E66E15",
     fontSize: 14,
-    fontWeight: 'bold'
+    fontWeight: "bold"
   }
 });
 

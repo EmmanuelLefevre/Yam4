@@ -53,30 +53,30 @@ const Board = ({ gameViewState}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%'
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+    height: "100%"
   },
   row: {
-    flexDirection: 'row',
-    width: '100%',
+    flexDirection: "row",
+    width: "100%",
     height: 20
   },
   playerTimerScoreContainer: {
     flex: 2,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
     borderTopWidth: 2,
     borderColor: "#E66E15"
   },
   opponentTimerScoreContainer: {
     flex: 2,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
     borderBottomWidth: 2,
     borderColor: "#E66E15"
   }
