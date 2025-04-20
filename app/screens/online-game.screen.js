@@ -32,8 +32,8 @@ export default function OnlineGameScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
     justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#24282C",
   },
   paragraph: {
