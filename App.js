@@ -21,11 +21,11 @@ function App() {
             initialRouteName="HomeScreen"
             screenOptions={{
               headerStyle: {
-                backgroundColor: '#FE6E00',
+                backgroundColor: '#13171A'
               },
-              headerTintColor: '#FFF',
+              headerTintColor: '#ED6A11',
               headerTitleStyle: {
-                fontWeight: 'bold',
+                fontWeight: 'bold'
               }
             }}>
             <Stack.Screen
