@@ -84,7 +84,7 @@ const Dice = ({ index, locked, value, onPress, opponent }) => {
   });
 
   return (
-    <TouchableOpacity onPress={handlePress} disabled={opponent}>
+    <TouchableOpacity onPress={ handlePress } disabled={ opponent || isInitial || !hasAnimatedEntry }>
       <Animated.View
         style={[
           styles.dice,
