@@ -13,7 +13,6 @@ const Choices = () => {
   const [availableChoices, setAvailableChoices] = useState([]);
 
   useEffect(() => {
-
     socket.on("game.choices.view-state", (data) => {
       setDisplayChoices(data['displayChoices']);
       setCanMakeChoice(data['canMakeChoice']);
