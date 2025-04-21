@@ -144,12 +144,12 @@ const GameService = {
 
       deckViewState: (playerKey, gameState) => {
         const deckViewState = {
-            displayPlayerDeck: gameState.currentTurn === playerKey,
-            displayOpponentDeck: gameState.currentTurn !== playerKey,
-            displayRollButton: gameState.deck.rollsCounter <= gameState.deck.rollsMaximum - 1,
-            rollsCounter: gameState.deck.rollsCounter,
-            rollsMaximum: gameState.deck.rollsMaximum,
-            dices: gameState.deck.dices
+          displayPlayerDeck: gameState.currentTurn === playerKey,
+          displayOpponentDeck: gameState.currentTurn !== playerKey,
+          displayRollButton: gameState.deck.rollsCounter <= gameState.deck.rollsMaximum - 1,
+          rollsCounter: gameState.deck.rollsCounter,
+          rollsMaximum: gameState.deck.rollsMaximum,
+          dices: gameState.deck.dices
         };
         return deckViewState;
       },
