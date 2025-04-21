@@ -19,7 +19,6 @@ const Choices = () => {
       setIdSelectedChoice(data['idSelectedChoice']);
       setAvailableChoices(data['availableChoices']);
     });
-
   }, []);
 
   const handleSelectChoice = (choiceId) => {
