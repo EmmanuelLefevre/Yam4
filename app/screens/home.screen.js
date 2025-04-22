@@ -6,6 +6,11 @@ import logo from "../assets/img/logo_yam4.png";
 export default function HomeScreen({ navigation }) {
   return (
     <View style={ styles.container }>
+      <View style={ styles.decriptionContainer }>
+        <Text style={ styles.description }>
+          Yam4
+        </Text>
+      </View>
       <View style={ styles.logoContainer }>
         <Image
           source={ logo }
@@ -40,6 +45,15 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingVertical: 40,
     backgroundColor: "#24282C"
+  },
+  decriptionContainer: {
+    alignItems: "center"
+  },
+  description: {
+    fontSize: 24,
+    color: "#ED6A11",
+    fontWeight: "bold",
+    letterSpacing: 0.5
   },
   logoContainer: {
     justifyContent: "center",
