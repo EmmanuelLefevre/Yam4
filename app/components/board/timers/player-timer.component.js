@@ -1,10 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+import { useFonts } from 'expo-font';
+import { Chewy_400Regular } from '@expo-google-fonts/chewy';
+
 import { SocketContext } from '../../../contexts/socket.context';
 
 
 const PlayerTimer = () => {
+  useFonts({
+    Chewy_400Regular
+  });
+
   const socket = useContext(SocketContext);
   const [playerTimer, setPlayerTimer] = useState(0);
 
@@ -34,9 +41,11 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   playerTimer: {
-    color: "#E66E15",
     fontSize: 14,
-    fontWeight: "bold"
+    color: "#E66E15",
+    fontFamily: "Chewy_400Regular",
+    fontWeight: "bold",
+    letterSpacing: 1.2
   },
   playerTimerGreen: {
     color: "#8AB70E",
