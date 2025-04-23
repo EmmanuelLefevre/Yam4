@@ -9,7 +9,7 @@ const OpponentScore = ({ score = 0 }) => {
     Chewy_400Regular
   });
 
-  const scoreValueStyle = score === 0
+  const opponentScoreValueStyle = score === 0
     ? styles.scoreRed
     : styles.scoreGreen;
 
@@ -17,7 +17,7 @@ const OpponentScore = ({ score = 0 }) => {
     <View style={ styles.opponentScoreContainer }>
       <Text style={ styles.opponentScore }>
         Score :
-        <Text style={ [styles.scoreValue, scoreValueStyle] }>
+        <Text style={ [styles.scoreValue, opponentScoreValueStyle] }>
           { ` ${ score }` }
         </Text>
       </Text>
