@@ -8,6 +8,7 @@
     "publish": "expo publish"
   },
   "dependencies": {
+    "@expo-google-fonts/chewy": "^0.3.0",
     "@expo-google-fonts/luckiest-guy": "^0.3.0",
     "@expo/metro-runtime": "~4.0.1",
     "@react-navigation/native": "^7.1.6",
