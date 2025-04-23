@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   opponentScoreContainer: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
   },
   opponentScore: {
     fontSize: 14,
