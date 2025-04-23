@@ -1,12 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
+import { useFonts } from 'expo-font';
+import { Chewy_400Regular } from '@expo-google-fonts/chewy';
+
 import { SocketContext } from "../../../contexts/socket.context";
 
 import Dice from "./dice.component";
 
 
 const PlayerDeck = () => {
+  useFonts({
+    Chewy_400Regular
+  });
 
   const socket = useContext(SocketContext);
   const [displayPlayerDeck, setDisplayPlayerDeck] = useState(false);
@@ -151,10 +157,11 @@ const styles = StyleSheet.create({
     )
   },
   rollButtonText: {
-    fontSize: 15,
+    fontSize: 18,
     color: "#6B6F73",
+    fontFamily: "Chewy_400Regular",
     fontWeight: "bold",
-    letterSpacing: 0.5
+    letterSpacing: 1
   }
 });
 
