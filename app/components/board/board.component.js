@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
     flex: 2,
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center",
     borderTopWidth: 2,
     borderColor: "#E66E15"
   },
@@ -76,7 +75,6 @@ const styles = StyleSheet.create({
     flex: 2,
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center",
     borderBottomWidth: 2,
     borderColor: "#E66E15"
   }
