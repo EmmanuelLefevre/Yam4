@@ -9,9 +9,18 @@ const PlayerScore = () => {
     Chewy_400Regular
   });
 
+  const playerScoreValueStyle = score === 0
+    ? styles.scoreRed
+    : styles.scoreGreen;
+
   return (
     <View style={ styles.playerScoreContainer }>
-      <Text style={ styles.playerScore }>Score : </Text>
+      <Text style={ styles.playerScore }>
+        Score :
+        <Text style={ [styles.scoreValue, playerScoreValueStyle] }>
+          { ` ${ score }` }
+        </Text>
+      </Text>
     </View>
   );
 };
@@ -28,6 +37,19 @@ const styles = StyleSheet.create({
     fontFamily: "Chewy_400Regular",
     fontWeight: "bold",
     letterSpacing: 1.2
+  },
+  scoreValue: {
+    width: 30,
+    textAlign: "center",
+    display: "inline-block"
+  },
+  scoreGreen: {
+    color: "#8AB70E",
+    fontWeight: "bold"
+  },
+  scoreRed: {
+    color: "#FF0000",
+    fontWeight: "bold"
   }
 });
 
