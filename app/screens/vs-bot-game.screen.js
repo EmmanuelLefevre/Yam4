@@ -1,10 +1,16 @@
 import React, { useContext } from "react";
 import { Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
+import { useFonts } from 'expo-font';
+import { Chewy_400Regular } from '@expo-google-fonts/chewy';
+
 import { SocketContext } from '../contexts/socket.context';
 
 
 export default function VsBotGameScreen({ navigation }) {
+  useFonts({
+    Chewy_400Regular
+  });
 
   const socket = useContext(SocketContext);
 
@@ -99,9 +105,10 @@ const styles = StyleSheet.create({
     )
   },
   buttonText: {
-    fontSize: 15,
+    fontSize: 17,
     color: "#6B6F73",
+    fontFamily: "Chewy_400Regular",
     fontWeight: "bold",
-    letterSpacing: 0.5
+    letterSpacing: 1
   }
 });
