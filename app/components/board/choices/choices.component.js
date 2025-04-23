@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
+import { LinearGradient } from 'expo-linear-gradient';
 import { useFonts } from 'expo-font';
 import { Chewy_400Regular } from '@expo-google-fonts/chewy';
 
@@ -40,25 +41,38 @@ const Choices = () => {
       {displayChoices &&
         availableChoices.map((choice) => {
           const isSelected = idSelectedChoice === choice.id;
+          const choiceContent = (
+            <Text
+              style={[
+                styles.choiceText,
+                isSelected && styles.selectedChoiceText
+              ]}>
+              { choice.value }
+            </Text>
+          );
 
           return (
             <TouchableOpacity
               key={ choice.id }
+              onPress={ () => handleSelectChoice(choice.id) }
+              disabled={ !canMakeChoice }
               style={[
                 styles.choiceButton,
                 isSelected && styles.selectedChoice,
                 !canMakeChoice && styles.disabledChoice,
-              ]}
-              onPress={ () => handleSelectChoice(choice.id) }
-              disabled={ !canMakeChoice }>
+              ]}>
 
-              <Text
-                style={[
-                  styles.choiceText,
-                  isSelected && styles.selectedChoiceText,
-                ]}>
-                { choice.value }
-              </Text>
+              {isSelected ? (
+                <LinearGradient
+                  colors={ ['#FFA033', '#ED6A11'] }
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 0 }}
+                  style={ styles.selectedChoiceBackground}>
+                  { choiceContent }
+                </LinearGradient>
+              ) : (
+                choiceContent
+              )}
             </TouchableOpacity>
           );
         })}
@@ -104,10 +118,20 @@ const styles = StyleSheet.create({
     )
   },
   selectedChoice: {
-    backgroundColor: "#E66E15"
+    borderWidth: 2,
+    borderColor: "#6B6F73"
   },
   selectedChoiceText: {
-    color: "#FFF"
+    color: "#6B6F73"
+  },
+  selectedChoiceBackground: {
+    ...StyleSheet.absoluteFillObject,
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    zIndex: 0
   },
   choiceText: {
     fontSize: 15,
