@@ -1,8 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Animated, Platform, StyleSheet, Text, TouchableOpacity } from "react-native";
 
+import { useFonts } from 'expo-font';
+import { Chewy_400Regular } from '@expo-google-fonts/chewy';
+
 
 const Dice = ({ index, locked, value, onPress, opponent }) => {
+  useFonts({
+    Chewy_400Regular
+  });
+
   const [isFirstRender, setIsFirstRender] = useState(true);
   const [hasAnimatedEntry, setHasAnimatedEntry] = useState(false);
 
@@ -155,8 +162,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#ED6A11"
   },
   diceText: {
-    fontSize: 18,
+    fontSize: 19,
     color: "#6B6F73",
+    fontFamily: "Chewy_400Regular",
     fontWeight: "bold"
   },
   initialDiceText: {
