@@ -22,7 +22,7 @@ const OpponentTimer = () => {
 
   }, []);
 
-  const timerValueStyle = opponentTimer < 15
+  const opponentTimerValueStyle = opponentTimer < 15
     ? styles.opponentTimerRed
     : styles.opponentTimerGreen;
 
@@ -30,7 +30,7 @@ const OpponentTimer = () => {
     <View style={ styles.opponentTimerContainer }>
       <Text style={ styles.opponentTimer }>
         Timer :
-        <Text style={[ timerValueStyle, styles.timerValue ]}>
+        <Text style={[ opponentTimerValueStyle, styles.timerValue ]}>
           { ` ${ opponentTimer }` }
         </Text>
       </Text>
