@@ -4,7 +4,7 @@ import { useFonts } from 'expo-font';
 import { Chewy_400Regular } from '@expo-google-fonts/chewy';
 
 
-const PlayerScore = () => {
+const PlayerScore = ({ score = 0 }) => {
   useFonts({
     Chewy_400Regular
   });
