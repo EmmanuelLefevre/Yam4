@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Dimensions, Image, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
+import { LinearGradient } from 'expo-linear-gradient';
 import { useFonts } from 'expo-font';
 import { Chewy_400Regular } from '@expo-google-fonts/chewy';
 import { LuckiestGuy_400Regular} from '@expo-google-fonts/luckiest-guy';
@@ -46,16 +47,26 @@ export default function HomeScreen({ navigation }) {
       <View style={ styles.buttonContainer }>
         <View style={ styles.buttonWrapper }>
           <TouchableOpacity
-            style={ styles.customButton }
             onPress={ () => navigation.navigate('OnlineGameScreen') }>
-            <Text style={ styles.buttonText }>Play online</Text>
+            <LinearGradient
+              colors={ ['#FFA033', '#ED6A11'] }
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={ styles.customButton }>
+              <Text style={ styles.buttonText }>Play online</Text>
+            </LinearGradient>
           </TouchableOpacity>
         </View>
         <View style={ styles.buttonWrapper }>
           <TouchableOpacity
-            style={ styles.customButton }
             onPress={ () => navigation.navigate('VsBotGameScreen') }>
-            <Text style={ styles.buttonText }>Play vs bot</Text>
+            <LinearGradient
+              colors={ ['#FFA033', '#ED6A11'] }
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={ styles.customButton }>
+              <Text style={ styles.buttonText }>Play vs bot</Text>
+            </LinearGradient>
           </TouchableOpacity>
         </View>
       </View>
@@ -103,10 +114,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 130,
     marginVertical: 10,
-    paddingVertical: 10,
+    paddingVertical: 8,
     backgroundColor: "#13171A",
-    borderWidth: 1,
-    borderColor: "#ED6A11",
+    borderWidth: 2,
+    borderColor: "#6B6F73",
     borderRadius: 25,
     elevation: 6,
     ...(Platform.OS === "web"
@@ -125,7 +136,7 @@ const styles = StyleSheet.create({
     )
   },
   buttonText: {
-    fontSize: 17,
+    fontSize: 18,
     color: "#6B6F73",
     fontFamily: "Chewy_400Regular",
     fontWeight: "bold",
