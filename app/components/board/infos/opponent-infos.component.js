@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     borderColor: "#E66E15"
   },
   opponentText: {
-    fontSize: 17,
+    fontSize: 19,
     color: "#E66E15",
     fontFamily: "Chewy_400Regular",
     fontWeight: "bold",
