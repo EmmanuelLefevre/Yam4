@@ -1,9 +1,30 @@
+import React, { useEffect, useState } from 'react';
 import { Dimensions, Image, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { LuckiestGuy_400Regular, useFonts } from '@expo-google-fonts/luckiest-guy';
 
 import logo from "../assets/img/logo_yam4.png";
 
 
 export default function HomeScreen({ navigation }) {
+  let [fontsLoaded] = useFonts({
+    LuckiestGuy_400Regular
+  });
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (fontsLoaded) {
+      setLoading(false);
+    }
+  }, [fontsLoaded]);
+
+  if (loading) {
+    return (
+      <View style={styles.container}>
+        <Text style={{ color: 'white', textAlign: 'center' }}>Loading in progress...</Text>
+      </View>
+    );
+  }
   return (
     <View style={ styles.container }>
       <View style={ styles.decriptionContainer }>
@@ -43,32 +64,32 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "space-between",
-    paddingVertical: 40,
-    backgroundColor: "#24282C"
+    backgroundColor: "#24282C",
+    padding: 40
   },
   decriptionContainer: {
+    justifyContent: "center",
     alignItems: "center"
   },
   description: {
-    fontSize: 24,
+    fontSize: 50,
     color: "#ED6A11",
-    fontWeight: "bold",
-    letterSpacing: 0.5
+    fontFamily: "LuckiestGuy_400Regular",
+    letterSpacing: 1
   },
   logoContainer: {
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    height: screenHeight * 0.3,
-    marginTop: 50
+    height: screenHeight * 0.3
   },
   logo: {
     width: "100%",
     height: "100%"
   },
   buttonContainer: {
-    alignItems: "center",
-    marginBottom: 30
+    justifyContent: "center",
+    alignItems: "center"
   },
   buttonWrapper: {
     marginVertical: 2
