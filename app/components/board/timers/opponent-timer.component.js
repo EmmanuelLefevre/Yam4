@@ -29,7 +29,10 @@ const OpponentTimer = () => {
   return (
     <View style={ styles.opponentTimerContainer }>
       <Text style={ styles.opponentTimer }>
-        Timer : <Text style={ timerValueStyle }>{ opponentTimer }</Text>
+        Timer :
+        <Text style={[ timerValueStyle, styles.timerValue ]}>
+          { ` ${ opponentTimer }` }
+        </Text>
       </Text>
     </View>
   );
@@ -47,6 +50,11 @@ const styles = StyleSheet.create({
     fontFamily: "Chewy_400Regular",
     fontWeight: "bold",
     letterSpacing: 1.2
+  },
+  timerValue: {
+    width: 30,
+    textAlign: "center",
+    display: "inline-block"
   },
   opponentTimerGreen: {
     color: "#8AB70E",
