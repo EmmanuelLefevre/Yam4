@@ -1,4 +1,12 @@
 {
+  "name": "yam4",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "expo start --clear",
+    "build": "expo build",
+    "publish": "expo publish"
+  },
   "dependencies": {
     "@expo-google-fonts/luckiest-guy": "^0.3.0",
     "@expo/metro-runtime": "~4.0.1",
