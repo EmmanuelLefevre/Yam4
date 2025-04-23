@@ -818,6 +818,11 @@
     "@babel/helper-string-parser" "^7.25.9"
     "@babel/helper-validator-identifier" "^7.25.9"
 
+"@expo-google-fonts/chewy@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/chewy/-/chewy-0.3.0.tgz#2674d6c4eb4579bd22c4b25029770fc48e453d1d"
+  integrity sha512-U/ID8WOafN7Ytp+a8MNjFH+LuSbSOJ//l8uPb1/GgqRlN+RNAX/VZwdbRDo/O53SqgTFwnwKj02Cwn7LZCiV0Q==
+
 "@expo-google-fonts/luckiest-guy@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/luckiest-guy/-/luckiest-guy-0.3.0.tgz#c2bc4f636b421f0717088ac7ce90480dc2592050"
