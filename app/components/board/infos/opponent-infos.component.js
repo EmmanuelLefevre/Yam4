@@ -1,7 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 
+import { useFonts } from 'expo-font';
+import { Chewy_400Regular } from '@expo-google-fonts/chewy';
+
 
 const OpponentInfos = () => {
+  useFonts({
+    Chewy_400Regular
+  });
+
   return (
     <View style={ styles.opponentInfosContainer }>
       <Text style={ styles.opponentText }>Opponent</Text>
@@ -19,9 +26,11 @@ const styles = StyleSheet.create({
     borderColor: "#E66E15"
   },
   opponentText: {
+    fontSize: 17,
     color: "#E66E15",
-    fontSize: 14,
-    fontWeight: "bold"
+    fontFamily: "Chewy_400Regular",
+    fontWeight: "bold",
+    letterSpacing: 1.5
   }
 });
 
