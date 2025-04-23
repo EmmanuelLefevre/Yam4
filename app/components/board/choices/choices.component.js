@@ -1,10 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
+import { useFonts } from 'expo-font';
+import { Chewy_400Regular } from '@expo-google-fonts/chewy';
+
 import { SocketContext } from "../../../contexts/socket.context";
 
 
 const Choices = () => {
+  useFonts({
+    Chewy_400Regular
+  });
+
   const socket = useContext(SocketContext);
 
   const [displayChoices, setDisplayChoices] = useState(false);
@@ -103,10 +110,11 @@ const styles = StyleSheet.create({
     color: "#FFF"
   },
   choiceText: {
-    fontSize: 14,
+    fontSize: 15,
     color: "#6B6F73",
+    fontFamily: "Chewy_400Regular",
     fontWeight: "bold",
-    letterSpacing: 0.5
+    letterSpacing: 1.3
   },
   disabledChoice: {
     opacity: 0.5
