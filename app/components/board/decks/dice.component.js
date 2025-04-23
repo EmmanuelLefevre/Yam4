@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Animated, Platform, StyleSheet, Text, TouchableOpacity } from "react-native";
 
+import { LinearGradient } from 'expo-linear-gradient';
 import { useFonts } from 'expo-font';
 import { Chewy_400Regular } from '@expo-google-fonts/chewy';
 
@@ -110,6 +111,13 @@ const Dice = ({ index, locked, value, onPress, opponent }) => {
           locked && styles.lockedDice
         ]}>
 
+        {isInitial && (
+          <LinearGradient
+            colors={ ['#FFA033', '#ED6A11'] }
+            start={{ x: 0, y: 1 }}
+            end={{ x: 1, y: 0 }}
+            style={ styles.diceBackground }/>
+        )}
         <Text
           style={[
             styles.diceText,
@@ -119,7 +127,7 @@ const Dice = ({ index, locked, value, onPress, opponent }) => {
               ? styles.lockedDiceText
               : null
           ]}>
-          {isInitial ? "?" : value}
+          { isInitial ? "?" : value }
         </Text>
       </Animated.View>
 
@@ -129,6 +137,7 @@ const Dice = ({ index, locked, value, onPress, opponent }) => {
 
 const styles = StyleSheet.create({
   dice: {
+    position: "relative",
     justifyContent: "center",
     alignItems: "center",
     color: "#6B6F73",
@@ -154,6 +163,11 @@ const styles = StyleSheet.create({
         }
     )
   },
+  diceBackground: {
+    ...StyleSheet.absoluteFillObject,
+    borderRadius: 5,
+    zIndex: 0
+  },
   initialDice: {
     borderWidth: 1,
     borderColor: "#FF0000"
@@ -165,7 +179,8 @@ const styles = StyleSheet.create({
     fontSize: 19,
     color: "#6B6F73",
     fontFamily: "Chewy_400Regular",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    zIndex: 1
   },
   initialDiceText: {
     color: "#FFF"
