@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Dimensions, Image, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { LuckiestGuy_400Regular, useFonts } from '@expo-google-fonts/luckiest-guy';
+
+import { useFonts } from 'expo-font';
+import { Chewy_400Regular } from '@expo-google-fonts/chewy';
+import { LuckiestGuy_400Regular} from '@expo-google-fonts/luckiest-guy';
 
 import logo from "../assets/img/logo_yam4.png";
 
 
 export default function HomeScreen({ navigation }) {
   let [fontsLoaded] = useFonts({
+    Chewy_400Regular,
     LuckiestGuy_400Regular
   });
 
@@ -20,11 +24,12 @@ export default function HomeScreen({ navigation }) {
 
   if (loading) {
     return (
-      <View style={styles.container}>
+      <View style={ styles.container }>
         <Text style={{ color: 'white', textAlign: 'center' }}>Loading in progress...</Text>
       </View>
     );
   }
+
   return (
     <View style={ styles.container }>
       <View style={ styles.decriptionContainer }>
@@ -120,9 +125,10 @@ const styles = StyleSheet.create({
     )
   },
   buttonText: {
-    fontSize: 15,
+    fontSize: 17,
     color: "#6B6F73",
+    fontFamily: "Chewy_400Regular",
     fontWeight: "bold",
-    letterSpacing: 0.5
+    letterSpacing: 1
   }
 });
