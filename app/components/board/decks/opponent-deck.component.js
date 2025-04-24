@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   diceContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "70%"
+    width: "60%"
   }
 });
 
