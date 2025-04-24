@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   opponentTimer: {
-    fontSize: 14,
+    fontSize: 12,
     color: "#E66E15",
     fontFamily: "Chewy_400Regular",
     fontWeight: "bold",
