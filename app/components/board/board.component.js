@@ -1,7 +1,7 @@
 import React from "react";
 import { ImageBackground, StyleSheet, View } from 'react-native';
 
-import opponentImage from '../../assets/img/4680.jpg';
+import opponentImage from '../../assets/img/play_mate.jpg';
 import playerImage from '../../assets/img/gg.jpg';
 
 import Choices from './choices/choices.component';
