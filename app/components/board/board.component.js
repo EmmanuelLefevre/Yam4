@@ -1,8 +1,8 @@
 import React from "react";
 import { ImageBackground, StyleSheet, View } from 'react-native';
 
-import opponentImage from '../../assets/img/play_mate.jpg';
-import playerImage from '../../assets/img/gg.jpg';
+import opponentImage from '../../assets/img/opponent_image.jpg';
+import playerImage from '../../assets/img/player_image.jpg';
 
 import Choices from './choices/choices.component';
 import Grid from './grid/grid.component';
@@ -45,7 +45,7 @@ const Board = ({ gameViewState}) => {
         source={ playerImage }
         style={ [styles.row, { height: '29%' }] }
         imageStyle={ styles.playerBackgroundImage }
-        resizeMode="cover">
+        resizeMode="stretch">
         <PlayerDeck />
       </ImageBackground>
 
