@@ -109,8 +109,10 @@ const PlayerDeck = () => {
 const styles = StyleSheet.create({
   deckPlayerContainer: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
+    paddingTop: 10,
+    paddingBottom: 20,
     borderTopWidth: 2,
     borderColor: "#E66E15"
   },
@@ -122,7 +124,8 @@ const styles = StyleSheet.create({
     borderColor: "#E66E15"
   },
   rollInfoContainer: {
-    marginBottom: 10
+    justifyContent: "center",
+    alignItems: "center"
   },
   rollInfoText: {
     color: "#E66E15",
@@ -132,15 +135,13 @@ const styles = StyleSheet.create({
   },
   diceContainer: {
     flexDirection: "row",
-    width: "70%",
     justifyContent: "space-between",
-    margin: 20
+    width: "60%"
   },
   customButton: {
     alignItems: "center",
-    width: 130,
-    marginVertical: 10,
-    paddingVertical: 8,
+    width: 100,
+    paddingVertical: 6,
     backgroundColor: "#13171A",
     borderWidth: 2,
     borderColor: "#6B6F73",
@@ -162,7 +163,7 @@ const styles = StyleSheet.create({
     )
   },
   rollButtonText: {
-    fontSize: 18,
+    fontSize: 16,
     color: "#6B6F73",
     fontFamily: "Chewy_400Regular",
     fontWeight: "bold",
