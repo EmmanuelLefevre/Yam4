@@ -33,10 +33,8 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View style={ styles.container }>
-      <View style={ styles.decriptionContainer }>
-        <Text style={ styles.description }>
-          Yam4
-        </Text>
+      <View style={ styles.titleContainer }>
+        <Text style={ styles.title }>Yam4</Text>
       </View>
       <View style={ styles.logoContainer }>
         <Image
@@ -83,15 +81,26 @@ const styles = StyleSheet.create({
     backgroundColor: "#24282C",
     padding: 40
   },
-  decriptionContainer: {
+  titleContainer: {
     justifyContent: "center",
     alignItems: "center"
   },
-  description: {
+  title: {
     fontSize: 50,
-    color: "#ED6A11",
-    fontFamily: "LuckiestGuy_400Regular",
-    letterSpacing: 1
+    fontFamily: 'LuckiestGuy_400Regular',
+    letterSpacing: 1,
+    textAlign: 'center',
+    ...(
+      Platform.OS === 'web'
+        ? {
+            backgroundImage: 'linear-gradient(to right, #FFA033, #ED6A11)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent'
+          }
+        : {
+            color: '#ED6A11'
+          }
+    )
   },
   logoContainer: {
     justifyContent: "center",
