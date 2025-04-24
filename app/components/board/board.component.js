@@ -20,7 +20,7 @@ const Board = ({ gameViewState}) => {
   return (
     <View style={ styles.container }>
 
-      <View style={ [styles.row, { height: '6%' }] }>
+      <View style={ [styles.row, { height: '8%' }] }>
         <OpponentInfos />
         <View style={ styles.opponentTimerScoreContainer }>
           <OpponentTimer />
@@ -30,7 +30,7 @@ const Board = ({ gameViewState}) => {
 
       <ImageBackground
         source={ opponentImage }
-        style={ [styles.row, { height: '15%' }] }
+        style={ [styles.row, { height: '13%' }] }
         imageStyle={ styles.opponentBackgroundImage }
         resizeMode="cover">
         <OpponentDeck />
