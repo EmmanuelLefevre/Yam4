@@ -1,5 +1,8 @@
 import React from "react";
-import { StyleSheet, View } from 'react-native';
+import { ImageBackground, StyleSheet, View } from 'react-native';
+
+import opponentImage from '../../assets/img/4680.jpg';
+import playerImage from '../../assets/img/gg.jpg';
 
 import Choices from './choices/choices.component';
 import Grid from './grid/grid.component';
@@ -17,7 +20,7 @@ const Board = ({ gameViewState}) => {
   return (
     <View style={ styles.container }>
 
-      <View style={ [styles.row, { height: '10%' }] }>
+      <View style={ [styles.row, { height: '6%' }] }>
         <OpponentInfos />
         <View style={ styles.opponentTimerScoreContainer }>
           <OpponentTimer />
@@ -25,20 +28,28 @@ const Board = ({ gameViewState}) => {
         </View>
       </View>
 
-      <View style={ [styles.row, { height: '15%' }] }>
+      <ImageBackground
+        source={ opponentImage }
+        style={ [styles.row, { height: '15%' }] }
+        imageStyle={ styles.opponentBackgroundImage }
+        resizeMode="cover">
         <OpponentDeck />
-      </View>
+      </ImageBackground>
 
-      <View style={ [styles.row, { height: '40%' }] }>
+      <View style={ [styles.row, { height: '42%' }] }>
         <Grid />
         <Choices />
       </View>
 
-      <View style={ [styles.row, { height: '25%' }] }>
+      <ImageBackground
+        source={ playerImage }
+        style={ [styles.row, { height: '29%' }] }
+        imageStyle={ styles.playerBackgroundImage }
+        resizeMode="cover">
         <PlayerDeck />
-      </View>
+      </ImageBackground>
 
-      <View style={ [styles.row, { height: '10%' }] }>
+      <View style={ [styles.row, { height: '8%' }] }>
         <PlayerInfos />
         <View style={ styles.playerTimerScoreContainer }>
           <PlayerTimer />
@@ -61,8 +72,15 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: "row",
+    width: "100%"
+  },
+  opponentBackgroundImage: {
     width: "100%",
-    height: 20
+    height: "100%"
+  },
+  playerBackgroundImage: {
+    width: "100%",
+    height: "100%"
   },
   playerTimerScoreContainer: {
     flex: 2,
