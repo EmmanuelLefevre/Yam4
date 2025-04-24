@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { View, StyleSheet } from "react-native";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { Animated, StyleSheet, View } from "react-native";
 
 import { SocketContext } from "../../../contexts/socket.context";
 
@@ -12,11 +12,22 @@ const OpponentDeck = () => {
   const [displayOpponentDeck, setDisplayOpponentDeck] = useState(false);
   const [opponentDices, setOpponentDices] = useState(Array(5).fill({ value: "", locked: false }));
 
+  const scaleAnims = useRef(Array(5).fill().map(() => new Animated.Value(1))).current;
+
   useEffect(() => {
     socket.on("game.deck.view-state", (data) => {
       setDisplayOpponentDeck(data['displayOpponentDeck']);
       if (data['displayOpponentDeck']) {
-        setOpponentDices(data['dices']);
+        const newDices = data['dices'];
+        setOpponentDices(newDices);
+
+        newDices.forEach((dice, index) => {
+          Animated.spring(scaleAnims[index], {
+            toValue: dice.locked ? 1.2 : 1,
+            friction: 3,
+            useNativeDriver: false
+          }).start();
+        });
       }
     });
   }, []);
@@ -26,12 +37,16 @@ const OpponentDeck = () => {
       {displayOpponentDeck && (
         <View style={ styles.diceContainer }>
           {opponentDices.map((diceData, index) => (
-            <Dice
+            <Animated.View
               key={ index }
-              index={ index }
-              locked={ diceData.locked }
-              value={ diceData.value }
-              opponent={ true }/>
+              style={{ transform: [{ scale: scaleAnims[index] }] }}>
+              <Dice
+                key={ index }
+                index={ index }
+                locked={ diceData.locked }
+                value={ diceData.value }
+                opponent={ true }/>
+            </Animated.View>
           ))}
         </View>
       )}
