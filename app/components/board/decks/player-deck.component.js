@@ -109,10 +109,10 @@ const PlayerDeck = () => {
 const styles = StyleSheet.create({
   deckPlayerContainer: {
     flex: 1,
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
-    paddingTop: 10,
-    paddingBottom: 20,
+    paddingTop: 5,
+    paddingBottom: 10,
     borderTopWidth: 2,
     borderColor: "#E66E15"
   },
@@ -136,7 +136,8 @@ const styles = StyleSheet.create({
   diceContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: "60%"
+    width: "60%",
+    padding: 20
   },
   customButton: {
     alignItems: "center",
