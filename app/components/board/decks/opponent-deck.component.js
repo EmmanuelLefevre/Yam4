@@ -12,22 +12,35 @@ const OpponentDeck = () => {
   const [displayOpponentDeck, setDisplayOpponentDeck] = useState(false);
   const [opponentDices, setOpponentDices] = useState(Array(5).fill({ value: "", locked: false }));
 
-  const scaleAnims = useRef(Array(5).fill().map(() => new Animated.Value(1))).current;
+  const prevOpponentDices = useRef(opponentDices);
+  const hasMounted = useRef(false);
+  const scaleAnim = useRef(Array(5).fill().map(() => new Animated.Value(1))).current;
 
   useEffect(() => {
     socket.on("game.deck.view-state", (data) => {
       setDisplayOpponentDeck(data['displayOpponentDeck']);
+
       if (data['displayOpponentDeck']) {
         const newDices = data['dices'];
-        setOpponentDices(newDices);
 
-        newDices.forEach((dice, index) => {
-          Animated.spring(scaleAnims[index], {
-            toValue: dice.locked ? 1.2 : 1,
-            friction: 3,
-            useNativeDriver: false
-          }).start();
-        });
+        if (hasMounted.current) {
+          newDices.forEach((dice, index) => {
+            const prevLocked = prevOpponentDices.current[index]?.locked;
+            const newLocked = dice.locked;
+
+            if (prevLocked !== newLocked) {
+              Animated.spring(scaleAnim[index], {
+                toValue: newLocked ? 1.2 : 1,
+                friction: 3,
+                useNativeDriver: false
+              }).start();
+            }
+          });
+        }
+
+        setOpponentDices(newDices);
+        prevOpponentDices.current = newDices;
+        hasMounted.current = true;
       }
     });
   }, []);
@@ -39,13 +52,13 @@ const OpponentDeck = () => {
           {opponentDices.map((diceData, index) => (
             <Animated.View
               key={ index }
-              style={{ transform: [{ scale: scaleAnims[index] }] }}>
+              style={{ transform: [{ scale: scaleAnim[index] }] }}>
               <Dice
-                key={ index }
                 index={ index }
                 locked={ diceData.locked }
                 value={ diceData.value }
-                opponent={ true }/>
+                opponent={ true }
+              />
             </Animated.View>
           ))}
         </View>
