@@ -91,8 +91,8 @@ export default function OnlineGameController() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
     justifyContent: "center",
+    alignItems: "center",
     width: "100%",
     height: "100%",
     backgroundColor: "#24282C"
