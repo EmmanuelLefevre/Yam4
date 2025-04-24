@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ED6A11"
   },
   diceText: {
-    fontSize: 19,
+    fontSize: 17,
     color: "#6B6F73",
     fontFamily: "Chewy_400Regular",
     fontWeight: "bold",
