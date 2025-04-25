@@ -1,5 +1,5 @@
 import React from "react";
-import { ImageBackground, StyleSheet, View } from 'react-native';
+import { Image, ImageBackground, StyleSheet, View } from 'react-native';
 
 import opponentImage from '../../assets/img/opponent_image.jpg';
 import playerImage from '../../assets/img/player_image.jpg';
@@ -28,13 +28,13 @@ const Board = ({ gameViewState}) => {
         </View>
       </View>
 
-      <ImageBackground
-        source={ opponentImage }
-        style={ [styles.row, { height: '13%' }] }
-        imageStyle={ styles.opponentBackgroundImage }
-        resizeMode="cover">
+      <View style={ [styles.row, styles.opponentBackgroundImage, { height: '13%' }] }>
+        <Image
+          source={ opponentImage }
+          style={ styles.opponentImage }
+          resizeMode="cover"/>
         <OpponentDeck />
-      </ImageBackground>
+      </View>
 
       <View style={ [styles.row, { height: '42%' }] }>
         <Grid />
@@ -75,8 +75,16 @@ const styles = StyleSheet.create({
     width: "100%"
   },
   opponentBackgroundImage: {
+    position: "relative",
+    overflow: "hidden"
+  },
+  opponentImage: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
     width: "100%",
-    height: "100%"
+    height: "230%",
+    opacity: 0.9
   },
   playerBackgroundImage: {
     width: "100%",
