@@ -105,12 +105,19 @@ const styles = StyleSheet.create({
   logoContainer: {
     justifyContent: "center",
     alignItems: "center",
-    width: "100%",
-    height: screenHeight * 0.3
+    alignSelf: "center",
+    width: "33%",
+    height: screenHeight * 0.3,
+    borderWidth: 2,
+    borderColor: "#6B6F73",
+    borderRadius: 25,
+    zIndex: 10,
+    overflow: "hidden"
   },
   logo: {
     width: "100%",
-    height: "100%"
+    height: "100%",
+    borderRadius: 25
   },
   buttonContainer: {
     justifyContent: "center",
