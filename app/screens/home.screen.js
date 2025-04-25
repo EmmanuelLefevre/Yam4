@@ -40,7 +40,7 @@ export default function HomeScreen({ navigation }) {
         <Image
           source={ logo }
           style={ styles.logo }
-          resizeMode="contain" />
+          resizeMode="cover"/>
       </View>
       <View style={ styles.buttonContainer }>
         <View style={ styles.buttonWrapper }>
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     height: screenHeight * 0.3,
     borderWidth: 2,
     borderColor: "#6B6F73",
-    borderRadius: 25,
+    borderRadius: 30,
     zIndex: 10,
     overflow: "hidden"
   },
