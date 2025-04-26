@@ -71,8 +71,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   footnote: {
-    color: "#6B6F73",
-    fontSize: 11
+    color: "#6B6F73"
   },
   buttonContainer: {
     margin: 20
