@@ -103,8 +103,5 @@ const styles = StyleSheet.create({
           shadowRadius: 6
         }
     )
-  },
-  buttonText: {
-    fontSize: 17
   }
 });
