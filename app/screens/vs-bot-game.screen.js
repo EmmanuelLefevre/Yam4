@@ -73,9 +73,6 @@ const styles = StyleSheet.create({
   footnote: {
     color: "#6B6F73"
   },
-  buttonContainer: {
-    margin: 20
-  },
   customButton: {
     alignItems: "center",
     width: 160,
