@@ -71,7 +71,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   footnote: {
-    color: "#6B6F73"
+    color: "#6B6F73",
+    fontSize: 11,
+    fontWeight: "bold",
+    marginTop: 5
+  },
+  buttonContainer: {
+    margin: 20
   },
   customButton: {
     alignItems: "center",
@@ -97,5 +103,12 @@ const styles = StyleSheet.create({
           shadowRadius: 6
         }
     )
+  },
+  buttonText: {
+    fontSize: 17,
+    color: "#6B6F73",
+    fontFamily: "Chewy_400Regular",
+    fontWeight: "bold",
+    letterSpacing: 1
   }
 });
