@@ -108,7 +108,6 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: "#6B6F73",
     fontFamily: "Chewy_400Regular",
-    fontWeight: "bold",
-    letterSpacing: 1
+    fontWeight: "bold"
   }
 });
