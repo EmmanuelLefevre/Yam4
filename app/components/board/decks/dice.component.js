@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
   },
   initialDice: {
     borderWidth: 1,
-    borderColor: "#FF0000"
+    borderColor: "#FFF"
   },
   lockedDice: {
     backgroundColor: "#ED6A11"
