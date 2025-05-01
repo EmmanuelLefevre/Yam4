@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-import { SocketContext } from "../../../contexts/socket.context";
+import { SocketContext } from "@/contexts/socket.context";
 
 
 const Grid = () => {
