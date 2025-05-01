@@ -1,19 +1,19 @@
 import React from "react";
 import { Image, ImageBackground, StyleSheet, View } from 'react-native';
 
-import opponentImage from '../../assets/img/opponent_image.jpg';
-import playerImage from '../../assets/img/player_image.jpg';
+import opponentImage from '@/assets/img/opponent_image.jpg';
+import playerImage from '@/assets/img/player_image.jpg';
 
-import Choices from './choices/choices.component';
-import Grid from './grid/grid.component';
-import OpponentDeck from './decks/opponent-deck.component';
-import OpponentInfos from './infos/opponent-infos.component';
-import OpponentScore from './scores/opponent-score.component';
-import OpponentTimer from './timers/opponent-timer.component';
-import PlayerDeck from './decks/player-deck.component';
-import PlayerInfos from './infos/player-infos.component';
-import PlayerScore from './scores/player-score.component';
-import PlayerTimer from './timers/player-timer.component';
+import Choices from "@/components/board/choices/choices.component";
+import Grid from "@/components/board/grid/grid.component";
+import OpponentDeck from "@/components/board/decks/opponent-deck.component";
+import OpponentInfos from "@/components/board/infos/opponent-infos.component";
+import OpponentScore from "@/components/board/scores/opponent-score.component";
+import OpponentTimer from "@/components/board/timers/opponent-timer.component";
+import PlayerDeck from "@/components/board/decks/player-deck.component";
+import PlayerInfos from "@/components/board/infos/player-infos.component";
+import PlayerScore from "@/components/board/scores/player-score.component";
+import PlayerTimer from "@/components/board/timers/player-timer.component";
 
 
 const Board = ({ gameViewState}) => {
