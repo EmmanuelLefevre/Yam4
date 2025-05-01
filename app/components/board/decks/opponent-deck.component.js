@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { Animated, StyleSheet, View } from "react-native";
 
-import { SocketContext } from "../../../contexts/socket.context";
+import { SocketContext } from "@/contexts/socket.context";
 
-import Dice from "./dice.component";
+import Dice from "@/components/board/decks/dice.component";
 
 
 const OpponentDeck = () => {
