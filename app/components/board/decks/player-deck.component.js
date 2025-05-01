@@ -5,9 +5,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useFonts } from 'expo-font';
 import { Chewy_400Regular } from '@expo-google-fonts/chewy';
 
-import { SocketContext } from "../../../contexts/socket.context";
+import { SocketContext } from "@/contexts/socket.context";
 
-import Dice from "./dice.component";
+import Dice from "@/components/board/decks/dice.component";
 
 
 const PlayerDeck = () => {
