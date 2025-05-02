@@ -6,7 +6,7 @@ import { useFonts } from 'expo-font';
 import { Chewy_400Regular } from '@expo-google-fonts/chewy';
 import { LuckiestGuy_400Regular} from '@expo-google-fonts/luckiest-guy';
 
-import logo from "../assets/img/logo_yam4.png";
+import logo from "@/assets/img/logo_yam4.png";
 
 
 export default function HomeScreen({ navigation }) {
