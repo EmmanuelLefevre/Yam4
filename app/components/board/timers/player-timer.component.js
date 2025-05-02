@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { useFonts } from 'expo-font';
 import { Chewy_400Regular } from '@expo-google-fonts/chewy';
 
-import { SocketContext } from '../../../contexts/socket.context';
+import { SocketContext } from '@/contexts/socket.context';
 
 
 const PlayerTimer = () => {
