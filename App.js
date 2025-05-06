@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { LogBox } from 'react-native';
+import { Dimensions, LogBox, Platform } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -12,6 +12,8 @@ import VsBotGameScreen from './app/screens/vs-bot-game.screen';
 
 
 const Stack = createStackNavigator();
+const isMobile = Dimensions.get('window').height < 600;
+
 LogBox.ignoreAllLogs(true);
 
 function App() {
@@ -23,7 +25,7 @@ function App() {
             screenOptions={{
               headerStyle: {
                 backgroundColor: '#13171A',
-                height: 45
+                height: isMobile ? 45 : 65
               },
               headerTintColor: '#ED6A11',
               headerTitleStyle: {
