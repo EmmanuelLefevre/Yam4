@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",
-    width: "33%",
+    width: Platform.OS === 'web' ? '33%' : '65%',
     height: screenHeight * 0.3,
     borderWidth: 2,
     borderColor: "#6B6F73",
