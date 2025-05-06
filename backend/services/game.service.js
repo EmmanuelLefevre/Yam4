@@ -220,8 +220,8 @@ const GameService = {
   },
   choices: {
     findCombinations: (dices, isDefi, isSec) => {
-      const allCombinations = ALL_COMBINATIONS;
       const availableCombinations = [];
+      const allCombinations = ALL_COMBINATIONS;
 
       const counts = Array(7).fill(0);
 
@@ -260,15 +260,12 @@ const GameService = {
         }
       }
 
-      const sortedValues = dices.map(dice => parseInt(dice.value)).sort((a, b) => a - b); // Trie les valeurs de dé
+      const sortedValues = dices.map(dice => parseInt(dice.value)).sort((a, b) => a - b);
 
-      // Vérifie si les valeurs triées forment une suite
       hasStraight = sortedValues.every((value, index) => index === 0 || value === sortedValues[index - 1] + 1);
 
-      // Vérifier si la somme ne dépasse pas 8
       const isLessThanEqual8 = sum <= 8;
 
-      // Retourner les combinaisons possibles via leur ID
       allCombinations.forEach(combination => {
         if (
           (combination.id.includes('brelan') && hasThreeOfAKind && parseInt(combination.id.slice(-1)) === threeOfAKindValue) ||
@@ -321,30 +318,58 @@ const GameService = {
     }
   },
   grid: {
-    // resetcanBeCheckedCells: (grid) => {
-    //   const updatedGrid = // TODO
+    resetcanBeCheckedCells: (grid) => {
+      const updatedGrid = grid.map(row => row.map(cell => {
+        return { ...cell, canBeChecked: false };
+      }));
+      return updatedGrid;
+    },
 
-    //   // La grille retournée doit avoir le flag 'canBeChecked' de toutes les cases de la 'grid' à 'false'
+    updateGridAfterSelectingChoice: (idSelectedChoice, grid) => {
+      const updatedGrid = grid.map(row => row.map(cell => {
+        if (cell.id === idSelectedChoice && cell.owner === null) {
+          return { ...cell, canBeChecked: true };
+        }
+        else {
+          return cell;
+        }
+      }));
 
-    //   return updatedGrid;
-    // },
+      return updatedGrid;
+    },
 
-    // updateGridAfterSelectingChoice: (idSelectedChoice, grid) => {
-    //   const updatedGrid = // TODO
+    selectCell: (idCell, rowIndex, cellIndex, currentTurn, grid) => {
+      const updatedGrid = grid.map((row, rowIndexParsing) => row.map((cell, cellIndexParsing) => {
+        if ((cell.id === idCell) && (rowIndexParsing === rowIndex) && (cellIndexParsing === cellIndex)) {
+          return { ...cell, owner: currentTurn };
+        }
+        else {
+          return cell;
+        }
+      }));
 
-    //   // La grille retournée doit avoir toutes les 'cells' qui ont le même 'id' que le 'idSelectedChoice' à 'canBeChecked: true'
+      return updatedGrid;
+    },
 
-    //   return updatedGrid;
-    // },
+    isAnyCombinationAvailableOnGridForPlayer: (gameState) => {
+      const currentTurn = gameState.currentTurn;
+      const grid = gameState.grid;
+      const availableChoices = gameState.choices.availableChoices;
 
-    // selectCell: (idCell, rowIndex, cellIndex, currentTurn, grid) => {
-    //   const updatedGrid = // TODO
+      for (let row of grid) {
+        for (let cell of row) {
+          if (cell.owner === null) {
+            for(let combination of availableChoices){
+              if (cell.id === combination.id) {
+                return true;
+              }
+            }
+          }
+        }
+      }
 
-    //   // La grille retournée doit avoir avoir la case selectionnée par le joueur du tour en cours à 'owner: currentTurn'
-    //   // Nous avons besoin de rowIndex et cellIndex pour différencier les deux combinaisons similaires du plateau
-
-    //   return updatedGrid;
-    // }
+      return false;
+    }
   },
 }
 
