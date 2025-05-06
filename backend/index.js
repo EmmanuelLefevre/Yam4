@@ -144,7 +144,7 @@ io.on('connection', socket => {
 
       const dices = games[gameIndex].gameState.deck.dices;
       const isDefi = false;
-      const isSec = games[gameIndex].gameState.deck.rollsCounter === 2;
+      const isSec = games[gameIndex].gameState.deck.rollsCounter === 1;
 
       const combinations = GameService.choices.findCombinations(dices, isDefi, isSec);
       games[gameIndex].gameState.choices.availableChoices = combinations;
@@ -161,6 +161,9 @@ io.on('connection', socket => {
       const dices = games[gameIndex].gameState.deck.dices;
       const isDefi = Math.random() < 0.15;
       const isSec = false;
+
+      const combinations = GameService.choices.findCombinations(dices, isDefi, isSec);
+      games[gameIndex].gameState.choices.availableChoices = combinations;
 
       games[gameIndex].gameState.timer = GameService.timer.getEndTurnDuration();
 
