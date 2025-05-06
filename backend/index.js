@@ -35,6 +35,13 @@ const updateClientsViewChoices = (game) => {
   }, 200);
 }
 
+const updateClientsViewGrid = (game) => {
+  setTimeout(() => {
+    game.player1Socket.emit('game.grid.view-state', GameService.send.forPlayer.gridViewState('player:1', game.gameState));
+    game.player2Socket.emit('game.grid.view-state', GameService.send.forPlayer.gridViewState('player:2', game.gameState));
+  }, 200)
+}
+
 
 /*======================================*/
 /*============ GAME METHODS ============*/
@@ -68,6 +75,7 @@ const createGame = (player1Socket, player2Socket) => {
 
   updateClientsViewTimers(games[gameIndex]);
   updateClientsViewDecks(games[gameIndex]);
+  updateClientsViewGrid(games[gameIndex]);
 
   const gameInterval = setInterval(() => {
     games[gameIndex].gameState.timer--;
@@ -80,10 +88,12 @@ const createGame = (player1Socket, player2Socket) => {
 
       games[gameIndex].gameState.deck = GameService.init.deck();
       games[gameIndex].gameState.choices = GameService.init.choices();
+      games[gameIndex].gameState.grid = GameService.grid.resetcanBeCheckedCells(games[gameIndex].gameState.grid);
 
       updateClientsViewTimers(games[gameIndex]);
       updateClientsViewDecks(games[gameIndex]);
       updateClientsViewChoices(games[gameIndex]);
+      updateClientsViewGrid(games[gameIndex]);
     }
 
     games[gameIndex].player1Socket.emit('game.timer', GameService.send.forPlayer.gameTimer('player:1', games[gameIndex].gameState));
@@ -149,8 +159,8 @@ io.on('connection', socket => {
       games[gameIndex].gameState.deck.dices = GameService.dices.lockEveryDice(games[gameIndex].gameState.deck.dices);
 
       const dices = games[gameIndex].gameState.deck.dices;
-      const isDefi = false;
-      const isSec = games[gameIndex].gameState.deck.rollsCounter === 2;
+      const isDefi = Math.random() < 0.15;
+      const isSec = false;
 
       games[gameIndex].gameState.timer = GameService.timer.getEndTurnDuration();
 
@@ -174,7 +184,35 @@ io.on('connection', socket => {
     const gameIndex = GameService.utils.findGameIndexBySocketId(games, socket.id);
     games[gameIndex].gameState.choices.idSelectedChoice = data.choiceId;
 
+    games[gameIndex].gameState.grid = GameService.grid.resetcanBeCheckedCells(games[gameIndex].gameState.grid);
+    games[gameIndex].gameState.grid = GameService.grid.updateGridAfterSelectingChoice(data.choiceId, games[gameIndex].gameState.grid);
+
     updateClientsViewChoices(games[gameIndex]);
+    updateClientsViewGrid(games[gameIndex]);
+  });
+
+  socket.on('game.grid.selected', (data) => {
+    const gameIndex = GameService.utils.findGameIndexBySocketId(games, socket.id);
+
+    games[gameIndex].gameState.grid = GameService.grid.resetcanBeCheckedCells(games[gameIndex].gameState.grid);
+    games[gameIndex].gameState.grid = GameService.grid.selectCell(data.cellId, data.rowIndex, data.cellIndex, games[gameIndex].gameState.currentTurn, games[gameIndex].gameState.grid);
+
+    // TODO: Here calcul score
+    // TODO: Then check if a player win
+
+    // Fin des tours
+    games[gameIndex].gameState.currentTurn = games[gameIndex].gameState.currentTurn === 'player:1' ? 'player:2' : 'player:1';
+    games[gameIndex].gameState.timer = GameService.timer.getTurnDuration();
+
+    games[gameIndex].gameState.deck = GameService.init.deck();
+    games[gameIndex].gameState.choices = GameService.init.choices();
+
+    games[gameIndex].player1Socket.emit('game.timer', GameService.send.forPlayer.gameTimer('player:1', games[gameIndex].gameState));
+    games[gameIndex].player2Socket.emit('game.timer', GameService.send.forPlayer.gameTimer('player:2', games[gameIndex].gameState));
+
+    updateClientsViewDecks(games[gameIndex]);
+    updateClientsViewChoices(games[gameIndex]);
+    updateClientsViewGrid(games[gameIndex]);
   });
 });
 
