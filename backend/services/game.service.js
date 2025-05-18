@@ -371,6 +371,43 @@ const GameService = {
       return false;
     }
   },
+  calculateScore: (rowIndex, cellIndex, currentPlayer, grid) => {
+    const directions = [
+      [[0, 1], [0, -1]],
+      [[1, 0], [-1, 0]],
+      [[1, 1], [-1, -1]],
+      [[1, -1], [-1, 1]],
+    ];
+    let totalPoints = 0;
+    let win = false;
+
+    directions.forEach(dirPair => {
+      let count = 1;
+      dirPair.forEach(([dR, dC]) => {
+        let r = rowIndex + dR;
+        let c = cellIndex + dC;
+        while (
+            grid[r] &&
+            grid[r][c] &&
+            grid[r][c].owner === currentPlayer
+            ) {
+          count++;
+          r += dR;
+          c += dC;
+        }
+      });
+
+      if (count >= 5) {
+        win = true;
+      } else if (count === 4) {
+        totalPoints += 2;
+      } else if (count === 3) {
+        totalPoints += 1;
+      }
+    });
+
+    return { points: totalPoints, win };
+  },
 }
 
 module.exports = GameService;
