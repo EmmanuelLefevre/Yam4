@@ -10,7 +10,6 @@ const OpponentScore = () => {
 
   const [score, setScore] = useState(0);
 
-
   useEffect(() => {
     const handleScore = ({ opponentScore }) => {
       setScore(opponentScore);

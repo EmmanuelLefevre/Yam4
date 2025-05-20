@@ -10,8 +10,11 @@ const OpponentInfos = () => {
   });
 
   return (
-    <View style={ styles.opponentInfosContainer }>
-      <Text style={ styles.opponentText }>Opponent</Text>
+    <View style={styles.opponentInfosContainer}>
+      <View style={styles.row}>
+        <Text style={styles.opponentText}>Opponent Player</Text>
+        <View style={styles.square} />
+      </View>
     </View>
   );
 };
@@ -24,6 +27,17 @@ const styles = StyleSheet.create({
     borderRightWidth: 2,
     borderBottomWidth: 2,
     borderColor: "#E66E15"
+  },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  square: {
+    width: 12,
+    height: 12,
+    backgroundColor: "#C23028",
+    marginRight: 8
   },
   opponentText: {
     fontSize: 17,

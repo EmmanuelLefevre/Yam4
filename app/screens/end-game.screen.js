@@ -1,8 +1,7 @@
-// screens/end-game.screen.js
-import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useFonts } from "expo-font";
 import { Chewy_400Regular } from "@expo-google-fonts/chewy";
+
 
 export default function EndGameScreen({ route, navigation }) {
   const { playerScore, opponentScore, isWinner } = route.params;
@@ -20,19 +19,19 @@ export default function EndGameScreen({ route, navigation }) {
         <Text style={ styles.scoreLine }>
           Your Score:
           <Text style={ [styles.scoreValue, isWinner ? styles.green : styles.red] }>
-            { ` ${playerScore}` }
+            { ` ${ playerScore }` }
           </Text>
         </Text>
         <Text style={ styles.scoreLine }>
           Opponent Score:
           <Text style={ [styles.scoreValue, isWinner ? styles.red : styles.green] }>
-            { ` ${opponentScore}` }
+            { ` ${ opponentScore }` }
           </Text>
         </Text>
 
         {!isWinner && (
           <Text style={ styles.message }>
-            You’ll do better next time!
+            You'll do better next time!
           </Text>
         )}
       </View>
