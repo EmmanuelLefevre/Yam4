@@ -11,7 +11,10 @@ const PlayerInfos = () => {
 
   return (
     <View style={ styles.playerInfosContainer }>
-      <Text style={ styles.playerText }>Player</Text>
+      <View style={ styles.row }>
+        <Text style={ styles.playerText }>Player</Text>
+        <View style={ styles.square } />
+      </View>
     </View>
   );
 };
@@ -24,6 +27,17 @@ const styles = StyleSheet.create({
     borderRightWidth: 2,
     borderTopWidth: 2,
     borderColor: "#E66E15"
+  },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  square: {
+    width: 12,
+    height: 12,
+    backgroundColor: "#2CCED2",
+    marginRight: 8
   },
   playerText: {
     fontSize: 17,
