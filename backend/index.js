@@ -143,13 +143,13 @@ io.on('connection', socket => {
   });
 
   socket.on('game.dices.roll', () => {
-    const idx   = GameService.utils.findGameIndexBySocketId(games, socket.id);
-    const game  = games[idx];
+    const idx = GameService.utils.findGameIndexBySocketId(games, socket.id);
+    const game = games[idx];
     const state = game.gameState;
-    const deck  = state.deck;
+    const deck = state.deck;
 
     if (deck.rollsCounter < deck.rollsMaximum - 1) {
-      deck.dices        = GameService.dices.roll(deck.dices);
+      deck.dices = GameService.dices.roll(deck.dices);
       deck.rollsCounter += 1;
 
       let combos = GameService.choices.findCombinations(
@@ -212,8 +212,8 @@ io.on('connection', socket => {
   });
 
   socket.on('game.choices.selected', ({ choiceId }) => {
-    const idx   = GameService.utils.findGameIndexBySocketId(games, socket.id);
-    const game  = games[idx];
+    const idx = GameService.utils.findGameIndexBySocketId(games, socket.id);
+    const game = games[idx];
     const state = game.gameState;
 
     state.choices.idSelectedChoice = choiceId;
@@ -233,7 +233,7 @@ io.on('connection', socket => {
   socket.on('game.grid.selected', ({idCell, rowIndex, cellIndex}) => {
     const gameIndex = GameService.utils.findGameIndexBySocketId(games, socket.id);
     const game = games[gameIndex];
-    const state     = game.gameState;
+    const state = game.gameState;
     const playerKey = (socket.id === game.player1Socket.id) ? 'player:1' : 'player:2';
 
     state.grid = GameService.grid.selectCell(
