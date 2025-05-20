@@ -1,26 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
 import { useFonts } from 'expo-font';
 import { Chewy_400Regular } from '@expo-google-fonts/chewy';
 
 import { SocketContext } from '@/contexts/socket.context';
-
 import Board from "@/components/board/board.component";
 
-
-export default function OnlineGameController() {
-  useFonts({
-    Chewy_400Regular
-  });
+export default function OnlineGameController({ navigation }) {
+  useFonts({ Chewy_400Regular });
 
   const socket = useContext(SocketContext);
 
   const [inQueue, setInQueue] = useState(false);
   const [inGame, setInGame] = useState(false);
   const [idOpponent, setIdOpponent] = useState(null);
+  const [scores, setScores] = useState({ player1: 0, player2: 0 });
 
+  // --- useEffect principal : queue / start / leave ---
   useEffect(() => {
+    if (!socket) return;
+
     console.log('[emit][queue.join]:', socket.id);
     socket.emit("queue.join");
     setInQueue(false);
@@ -28,24 +27,53 @@ export default function OnlineGameController() {
 
     socket.on('queue.added', (data) => {
       console.log('[listen][queue.added]:', data);
-      setInQueue(data['inQueue']);
-      setInGame(data['inGame']);
+      setInQueue(data.inQueue);
+      setInGame(data.inGame);
     });
 
     socket.on('queue.left', (data) => {
       console.log('[listen][queue.left]:', data);
-      setInQueue(data['inQueue']);
-      setInGame(data['inQueue']);
+      setInQueue(data.inQueue);
+      setInGame(data.inQueue);
       navigation.navigate("HomeScreen");
     });
 
     socket.on('game.start', (data) => {
       console.log('[listen][game.start]:', data);
-      setInQueue(data['inQueue']);
-      setInGame(data['inGame']);
-      setIdOpponent(data['idOpponent']);
+      setInQueue(data.inQueue);
+      setInGame(data.inGame);
+      setIdOpponent(data.idOpponent);
     });
-  }, []);
+
+    socket.on("game.end", ({ player1Score, player2Score, winner }) => {
+      navigation.replace("EndGameScreen", {
+        playerScore: socket.id === winner ? player1Score : player2Score,
+        opponentScore: socket.id === winner ? player2Score : player1Score,
+        isWinner: socket.id === winner,
+      });
+    });
+
+    return () => {
+      socket.off('queue.added');
+      socket.off('queue.left');
+      socket.off('game.start');
+      socket.off("game.end")
+    };
+  }, [socket, navigation]);
+
+  // --- useEffect secondaire : réception des scores ---
+  useEffect(() => {
+    if (!socket) return;
+
+    const onScore = ({ player1Score, player2Score }) => {
+      setScores({ player1: player1Score, player2: player2Score });
+    };
+
+    socket.on("game.score", onScore);
+    return () => {
+      socket.off("game.score", onScore);
+    };
+  }, [socket]);
 
   const leftQueue = () => {
     console.log('[emit][queue.leave]:', socket.id);
@@ -53,38 +81,34 @@ export default function OnlineGameController() {
   };
 
   return (
-    <View style={ styles.container }>
-      {!inQueue && !inGame && (
-        <>
-          <Text style={styles.paragraph}>
-            Waiting for server datas...
-          </Text>
-        </>
-      )}
+      <View style={styles.container}>
+        {/* État initial / pas de connexion */}
+        {!inQueue && !inGame && (
+            <Text style={styles.paragraph}>
+              Waiting for server data...
+            </Text>
+        )}
 
-      {inQueue && (
-        <>
-          <Text style={ styles.paragraph }>
-            Waiting for another player...
-          </Text>
-          <View style={ styles.buttonContainer }>
-            <TouchableOpacity
-              style={ styles.customButton }
-              onPress={ leftQueue }>
-              <Text style={ styles.buttonText }>
-                Leave queue
+        {/* En file d’attente */}
+        {inQueue && (
+            <>
+              <Text style={styles.paragraph}>
+                Waiting for another player...
               </Text>
-            </TouchableOpacity>
-          </View>
-        </>
-      )}
+              <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.customButton} onPress={leftQueue}>
+                  <Text style={styles.buttonText}>Leave queue</Text>
+                </TouchableOpacity>
+              </View>
+            </>
+        )}
 
-      {inGame && (
-        <>
-          <Board/>
-        </>
-      )}
-    </View>
+        {inGame && (
+            <>
+              <Board />
+            </>
+        )}
+      </View>
   );
 }
 
@@ -95,15 +119,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     height: "100%",
-    backgroundColor: "#24282C"
+    backgroundColor: "#24282C",
   },
   paragraph: {
     color: "#6B6F73",
     fontSize: 16,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    fontFamily: "Chewy_400Regular",
   },
   buttonContainer: {
-    margin: 20
+    margin: 20,
   },
   customButton: {
     alignItems: "center",
@@ -116,25 +141,26 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     elevation: 6,
     ...(Platform.OS === "web"
-      ? {
-          boxShadow: "5px 5px 6px rgba(0, 0, 0, 0.4)"
-        }
-      : {
+        ? { boxShadow: "5px 5px 6px rgba(0, 0, 0, 0.4)" }
+        : {
           shadowColor: "#000",
-          shadowOffset: {
-            width: 5,
-            height: 5
-          },
+          shadowOffset: { width: 5, height: 5 },
           shadowOpacity: 0.4,
-          shadowRadius: 6
-        }
-    )
+          shadowRadius: 6,
+        }),
   },
   buttonText: {
     fontSize: 17,
     color: "#6B6F73",
     fontFamily: "Chewy_400Regular",
     fontWeight: "bold",
-    letterSpacing: 1
-  }
+    letterSpacing: 1,
+  },
+  scoresContainer: {
+    flexDirection: "row",
+    marginBottom: 16,
+  },
+  opponentScore: {
+    marginLeft: 24,
+  },
 });

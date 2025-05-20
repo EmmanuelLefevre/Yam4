@@ -30,6 +30,7 @@ const CHOICES_INIT = {
   isSec: false,
   idSelectedChoice: null,
   availableChoices: [],
+  isChallenge: false,
 };
 
 const ALL_COMBINATIONS = [
@@ -168,7 +169,8 @@ const GameService = {
         return {
           displayGrid: true,
           canSelectCells: (playerKey === gameState.currentTurn) && (gameState.choices.availableChoices.length > 0),
-          grid: gameState.grid
+          grid: gameState.grid,
+          isChallenge:    gameState.choices.isChallenge
         };
       }
     }
@@ -326,16 +328,23 @@ const GameService = {
     },
 
     updateGridAfterSelectingChoice: (idSelectedChoice, grid) => {
-      const updatedGrid = grid.map(row => row.map(cell => {
-        if (cell.id === idSelectedChoice && cell.owner === null) {
-          return { ...cell, canBeChecked: true };
-        }
-        else {
-          return cell;
-        }
-      }));
+      if (idSelectedChoice === 'defi') {
+        return grid.map(row =>
+            row.map(cell => ({
+              ...cell,
+              canBeChecked: cell.id === 'defi' && cell.owner === null
+            }))
+        );
+      }
 
-      return updatedGrid;
+      return grid.map(row =>
+          row.map(cell => ({
+            ...cell,
+            canBeChecked:
+                cell.id === idSelectedChoice &&
+                cell.owner === null
+          }))
+      );
     },
 
     selectCell: (idCell, rowIndex, cellIndex, currentTurn, grid) => {
@@ -370,6 +379,44 @@ const GameService = {
 
       return false;
     }
+  },
+  calculateScore: (rowIndex, cellIndex, currentPlayer, grid) => {
+    const directions = [
+      [[0, 1], [0, -1]],
+      [[1, 0], [-1, 0]],
+      [[1, 1], [-1, -1]],
+      [[1, -1], [-1, 1]],
+    ];
+    let totalPoints = 0;
+    let win = false;
+
+    directions.forEach(dirPair => {
+      let count = 1;
+      dirPair.forEach(([dR, dC]) => {
+        let r = rowIndex + dR;
+        let c = cellIndex + dC;
+        while (
+            grid[r] &&
+            grid[r][c] &&
+            grid[r][c].owner === currentPlayer
+            ) {
+          count++;
+          r += dR;
+          c += dC;
+        }
+      });
+
+      if (count >= 5) {
+        win = true;
+      } else if (count === 4) {
+        totalPoints += 2;
+      } else if (count === 3) {
+        totalPoints += 1;
+      }
+
+    });
+
+    return { points: totalPoints, win };
   },
 }
 

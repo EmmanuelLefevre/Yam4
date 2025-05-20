@@ -9,7 +9,7 @@ import { SocketContext, socket } from './app/contexts/socket.context';
 import HomeScreen from './app/screens/home.screen';
 import OnlineGameScreen from './app/screens/online-game.screen';
 import VsBotGameScreen from './app/screens/vs-bot-game.screen';
-
+import EndGameScreen from './app/screens/end-game.screen';
 
 const Stack = createStackNavigator();
 const isMobile = Dimensions.get('window').height < 600;
@@ -44,6 +44,9 @@ function App() {
               name="OnlineGameScreen"
               component={ OnlineGameScreen }
               options={{ title: 'Online Game' }}/>
+              <Stack.Screen
+                  name="EndGameScreen"
+                  component={EndGameScreen} />
           </Stack.Navigator>
         </NavigationContainer>
     </SocketContext.Provider>
