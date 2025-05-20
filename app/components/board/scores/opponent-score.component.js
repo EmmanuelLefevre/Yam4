@@ -1,10 +1,27 @@
+import React, { useContext, useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-
 import { useFonts } from 'expo-font';
 import { Chewy_400Regular } from '@expo-google-fonts/chewy';
+import { SocketContext } from "@/contexts/socket.context";
 
 
-const OpponentScore = ({ score = 0 }) => {
+const OpponentScore = () => {
+  const socket = useContext(SocketContext);
+
+  const [score, setScore] = useState(0);
+
+
+  useEffect(() => {
+    const handleScore = ({ opponentScore }) => {
+      setScore(opponentScore);
+    };
+    socket.on("game.score", handleScore);
+
+    return () => {
+      socket.off("game.score", handleScore);
+    };
+  }, [socket]);
+
   useFonts({
     Chewy_400Regular
   });

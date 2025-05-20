@@ -30,6 +30,7 @@ const CHOICES_INIT = {
   isSec: false,
   idSelectedChoice: null,
   availableChoices: [],
+  isChallenge: false,
 };
 
 const ALL_COMBINATIONS = [
@@ -168,7 +169,8 @@ const GameService = {
         return {
           displayGrid: true,
           canSelectCells: (playerKey === gameState.currentTurn) && (gameState.choices.availableChoices.length > 0),
-          grid: gameState.grid
+          grid: gameState.grid,
+          isChallenge:    gameState.choices.isChallenge
         };
       }
     }
@@ -326,16 +328,23 @@ const GameService = {
     },
 
     updateGridAfterSelectingChoice: (idSelectedChoice, grid) => {
-      const updatedGrid = grid.map(row => row.map(cell => {
-        if (cell.id === idSelectedChoice && cell.owner === null) {
-          return { ...cell, canBeChecked: true };
-        }
-        else {
-          return cell;
-        }
-      }));
+      if (idSelectedChoice === 'defi') {
+        return grid.map(row =>
+            row.map(cell => ({
+              ...cell,
+              canBeChecked: cell.id === 'defi' && cell.owner === null
+            }))
+        );
+      }
 
-      return updatedGrid;
+      return grid.map(row =>
+          row.map(cell => ({
+            ...cell,
+            canBeChecked:
+                cell.id === idSelectedChoice &&
+                cell.owner === null
+          }))
+      );
     },
 
     selectCell: (idCell, rowIndex, cellIndex, currentTurn, grid) => {
@@ -404,6 +413,7 @@ const GameService = {
       } else if (count === 3) {
         totalPoints += 1;
       }
+
     });
 
     return { points: totalPoints, win };
