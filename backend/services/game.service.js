@@ -170,7 +170,7 @@ const GameService = {
           displayGrid: true,
           canSelectCells: (playerKey === gameState.currentTurn) && (gameState.choices.availableChoices.length > 0),
           grid: gameState.grid,
-          isChallenge:    gameState.choices.isChallenge
+          isChallenge: gameState.choices.isChallenge
         };
       }
     }
