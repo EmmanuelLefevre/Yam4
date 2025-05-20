@@ -58,7 +58,8 @@ const newPlayerInQueue = (socket) => {
     const player1Socket = queue.shift();
     const player2Socket = queue.shift();
     createGame(player1Socket, player2Socket);
-  } else {
+  }
+  else {
     socket.emit('queue.added', GameService.send.forPlayer.viewQueueState());
   }
 };
@@ -152,9 +153,9 @@ io.on('connection', socket => {
       deck.rollsCounter += 1;
 
       let combos = GameService.choices.findCombinations(
-          deck.dices,
-          /* isDefi */ false,
-          /* isSec  */ false
+        deck.dices,
+        /* isDefi */ false,
+        /* isSec  */ false
       );
 
       if (deck.rollsCounter === 2 && combos.length === 0) {
@@ -169,30 +170,32 @@ io.on('connection', socket => {
       return;
     }
 
-    deck.dices        = GameService.dices.roll(deck.dices);
+    deck.dices = GameService.dices.roll(deck.dices);
     deck.rollsCounter += 1;
-    deck.dices        = GameService.dices.lockEveryDice(deck.dices);
+    deck.dices = GameService.dices.lockEveryDice(deck.dices);
 
     let combos = [];
 
     if (state.choices.isChallenge) {
       const all = GameService.choices.findCombinations(deck.dices, true, false);
       const success = all.some(c =>
-          !c.id.startsWith('brelan') && c.id !== 'moinshuit'
+        !c.id.startsWith('brelan') && c.id !== 'moinshuit'
       );
       if (success) {
         combos = [{ id: 'defi', value: 'Défi' }];
-      } else {
+      }
+      else {
         combos = [];
       }
-    } else {
+    }
+    else {
       combos = GameService.choices.findCombinations(deck.dices, false, false);
     }
 
     state.choices.availableChoices = combos;
     state.timer = combos.length === 0
-        ? 5
-        : GameService.timer.getEndTurnDuration();
+      ? 5
+      : GameService.timer.getEndTurnDuration();
 
     updateClientsViewDecks(game);
     updateClientsViewChoices(game);
@@ -217,9 +220,9 @@ io.on('connection', socket => {
     state.choices.isChallenge = (choiceId === 'defi');
     state.grid = GameService.grid.resetcanBeCheckedCells(state.grid);
     state.grid = GameService.grid.updateGridAfterSelectingChoice(
-        choiceId,
-        state.grid,
-        state.currentTurn
+      choiceId,
+      state.grid,
+      state.currentTurn
     );
 
     updateClientsViewChoices(game);
@@ -234,48 +237,45 @@ io.on('connection', socket => {
     const playerKey = (socket.id === game.player1Socket.id) ? 'player:1' : 'player:2';
 
     state.grid = GameService.grid.selectCell(
-        idCell,
-        rowIndex,
-        cellIndex,
-        playerKey,
-        state.grid
+      idCell,
+      rowIndex,
+      cellIndex,
+      playerKey,
+      state.grid
     );
 
     state.choices.isChallenge = false;
 
     const { points, win } = GameService.calculateScore(
-        rowIndex,
-        cellIndex,
-        playerKey,
-        state.grid
+      rowIndex,
+      cellIndex,
+      playerKey,
+      state.grid
     );
     if (playerKey === 'player:1') state.player1Score += points;
-    else                           state.player2Score += points;
-
+    else state.player2Score += points;
 
     updateClientsViewGrid(game);
     updateClientsViewScores(game);
-
 
     const totalPlaced = state.grid.flat().filter(c => c.owner === playerKey).length;
     if (win || totalPlaced >= 12) {
       const p1 = game.gameState.player1Score;
       const p2 = game.gameState.player2Score;
       const winner =
-          p1 > p2 ? game.player1Socket.id
-              : p2 > p1 ? game.player2Socket.id
-                  : null;
-
+        p1 > p2 ? game.player1Socket.id
+        : p2 > p1 ? game.player2Socket.id
+        : null;
 
       game.player1Socket.emit('game.end', {player1Score: p1, player2Score: p2, winner});
       game.player2Socket.emit('game.end', {player1Score: p1, player2Score: p2, winner});
       return;
     }
     state.currentTurn = playerKey === 'player:1' ? 'player:2' : 'player:1';
-    state.timer       = GameService.timer.getTurnDuration();
-    state.deck        = GameService.init.deck();
-    state.choices     = GameService.init.choices();
-    state.grid        = GameService.grid.resetcanBeCheckedCells(state.grid);
+    state.timer = GameService.timer.getTurnDuration();
+    state.deck = GameService.init.deck();
+    state.choices = GameService.init.choices();
+    state.grid = GameService.grid.resetcanBeCheckedCells(state.grid);
 
     updateClientsViewTimers(game);
     updateClientsViewDecks(game);
