@@ -45,10 +45,19 @@ export default function OnlineGameController({ navigation }) {
       setIdOpponent(data.idOpponent);
     });
 
+    socket.on("game.end", ({ player1Score, player2Score, winner }) => {
+      navigation.replace("EndGameScreen", {
+        playerScore: socket.id === winner ? player1Score : player2Score,
+        opponentScore: socket.id === winner ? player2Score : player1Score,
+        isWinner: socket.id === winner,
+      });
+    });
+
     return () => {
       socket.off('queue.added');
       socket.off('queue.left');
       socket.off('game.start');
+      socket.off("game.end")
     };
   }, [socket, navigation]);
 
@@ -94,18 +103,8 @@ export default function OnlineGameController({ navigation }) {
             </>
         )}
 
-        {/* En jeu */}
         {inGame && (
             <>
-              {/* Affichage des scores */}
-              <View style={styles.scoresContainer}>
-                <Text style={styles.paragraph}>Your score: {scores.player1}</Text>
-                <Text style={[styles.paragraph, styles.opponentScore]}>
-                  Opponent: {scores.player2}
-                </Text>
-              </View>
-
-              {/* Plateau de jeu */}
               <Board />
             </>
         )}
