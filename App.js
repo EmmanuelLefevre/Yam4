@@ -44,9 +44,9 @@ function App() {
               name="OnlineGameScreen"
               component={ OnlineGameScreen }
               options={{ title: 'Online Game' }}/>
-              <Stack.Screen
-                  name="EndGameScreen"
-                  component={EndGameScreen} />
+            <Stack.Screen
+              name="EndGameScreen"
+              component={EndGameScreen} />
           </Stack.Navigator>
         </NavigationContainer>
     </SocketContext.Provider>
