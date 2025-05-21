@@ -13,7 +13,7 @@ export default function EndGameScreen({ route, navigation }) {
     <View style={ styles.container }>
       <View style={ styles.content }>
         <Text style={ styles.title }>
-            { isWinner ? "Winner !!!" : "You lose" }
+          { isWinner ? "Winner !!!" : "You lose" }
         </Text>
 
         <Text style={ styles.scoreLine }>

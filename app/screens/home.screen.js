@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Dimensions, Image, Platform, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useEffect, useRef, useState } from 'react';
+import { Animated, Dimensions, Image, Platform, StyleSheet, Text, TouchableOpacity, Vibration, View } from "react-native";
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { useFonts } from 'expo-font';
@@ -16,10 +16,35 @@ export default function HomeScreen({ navigation }) {
   });
 
   const [loading, setLoading] = useState(true);
+  const logoScale = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     if (fontsLoaded) {
       setLoading(false);
+      Vibration.vibrate(100);
+
+      Animated.sequence([
+        Animated.timing(logoScale, {
+          toValue: 1.2,
+          duration: 300,
+          useNativeDriver: false
+        }),
+        Animated.timing(logoScale, {
+          toValue: 0.95,
+          duration: 250,
+          useNativeDriver: false
+        }),
+        Animated.timing(logoScale, {
+          toValue: 1.1,
+          duration: 200,
+          useNativeDriver: false
+        }),
+        Animated.timing(logoScale, {
+          toValue: 1,
+          duration: 200,
+          useNativeDriver: false
+        })
+      ]).start();
     }
   }, [fontsLoaded]);
 
@@ -36,11 +61,15 @@ export default function HomeScreen({ navigation }) {
       <View style={ styles.titleContainer }>
         <Text style={ styles.title }>Yam4</Text>
       </View>
-      <View style={ styles.logoContainer }>
-        <Image
-          source={ logo }
-          style={ styles.logo }
-          resizeMode="cover"/>
+      <View style={ styles.logoWrapper }>
+        <Animated.View style={[
+          styles.logoContainer,
+          { transform: [{ scale: logoScale }] }]}>
+          <Image
+            source={ logo }
+            style={ styles.logo }
+            resizeMode="cover"/>
+        </Animated.View>
       </View>
       <View style={ styles.buttonContainer }>
         <View style={ styles.buttonWrapper }>
@@ -102,12 +131,17 @@ const styles = StyleSheet.create({
           }
     )
   },
+  logoWrapper: {
+    alignSelf: 'center',
+    width: Platform.OS === 'web' ? '33%' : '65%',
+    height: screenHeight * 0.3
+  },
   logoContainer: {
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",
-    width: Platform.OS === 'web' ? '33%' : '65%',
-    height: screenHeight * 0.3,
+    width: '100%',
+    height: '100%',
     borderWidth: 2,
     borderColor: "#6B6F73",
     borderRadius: 30,
