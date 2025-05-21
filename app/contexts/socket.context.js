@@ -1,18 +1,21 @@
 import React from "react";
-import { Platform } from 'react-native';
+import { Platform } from "react-native";
 import io from "socket.io-client";
 
-
-export const socketEndpoint = Platform.OS === 'web' ? "http://localhost:3000" : "http://10.60.104.81:3000";
+export const socketEndpoint =
+  Platform.OS === "web" ? "http://localhost:3000" : "http://10.60.104.81:3000";
 
 export const socket = io(socketEndpoint, {
   transports: ["websocket"],
-});;
+  reconnection: true,
+  reconnectionAttempts: Infinity,
+  reconnectionDelay: 1000,
+});
 
 export let hasConnection = false;
 
 socket.on("connect", () => {
-  console.log("connect: ", socket.id);
+  console.log("connect : ", socket.id);
   hasConnection = true;
 });
 

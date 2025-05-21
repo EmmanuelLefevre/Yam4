@@ -114,11 +114,18 @@ const GameService = {
   send: {
     forPlayer: {
       viewGameState: (playerKey, game) => {
+        const gs = game.gameState;
         return {
           inQueue: false,
-          inGame: true,
-          idPlayer: (playerKey === 'player:1') ? game.player1Socket.id : game.player2Socket.id,
-          idOpponent: (playerKey === 'player:1') ? game.player2Socket.id : game.player1Socket.id
+          inGame:  true,
+          gameState: gs,
+          deck: gs.deck,
+          choices: gs.choices,
+          grid: gs.grid,
+          playerTimer: gs.currentTurn === playerKey ? gs.timer : 0,
+          opponentTimer: gs.currentTurn === playerKey ? 0      : gs.timer,
+          playerScore: playerKey === 'player:1' ? gs.player1Score : gs.player2Score,
+          opponentScore: playerKey === 'player:1' ? gs.player2Score : gs.player1Score,
         };
       },
 
@@ -156,13 +163,22 @@ const GameService = {
       },
 
       choicesViewState: (playerKey, gameState) => {
-        const choicesViewState = {
+        const filteredChoices = gameState.choices.availableChoices.filter(choice =>
+            gameState.grid.some(row =>
+                row.some(cell => cell.owner === null && cell.id === choice.id)
+            )
+        );
+
+        const idSelected = filteredChoices.some(c => c.id === gameState.choices.idSelectedChoice)
+            ? gameState.choices.idSelectedChoice
+            : null;
+
+        return {
           displayChoices: true,
           canMakeChoice: playerKey === gameState.currentTurn,
-          idSelectedChoice: gameState.choices.idSelectedChoice,
-          availableChoices: gameState.choices.availableChoices
-        }
-        return choicesViewState;
+          idSelectedChoice: idSelected,
+          availableChoices: filteredChoices
+        };
       },
 
       gridViewState: (playerKey, gameState) => {

@@ -1,6 +1,14 @@
 const app = require('express')();
 const http = require('http').Server(app);
-const io = require('socket.io')(http);
+const io = require('socket.io')(http, {
+  transports: ['websocket'],    // on n’utilise que WebSocket
+  pingInterval: 10000,          // envoi d’un ping toutes les 10 s
+  pingTimeout: 600000,          // 10 minutes avant de déclarer timeout
+  cors: {
+    origin: '*',                // pour le dev en local
+    methods: ['GET', 'POST']
+  }
+});
 var uniqid = require('uniqid');
 
 const GameService = require('./services/game.service');
@@ -45,7 +53,10 @@ const updateClientsViewGrid = (game) => {
   game.player1Socket.emit('game.grid.view-state', GameService.send.forPlayer.gridViewState('player:1', game.gameState));
   game.player2Socket.emit('game.grid.view-state', GameService.send.forPlayer.gridViewState('player:2', game.gameState));
 };
-
+const updateClientsViewState = (game) => {
+  game.player1Socket.emit("game.state", game.gameState);
+  game.player2Socket.emit("game.state", game.gameState);
+};
 
 /*======================================*/
 /*============ GAME METHODS ============*/
@@ -66,6 +77,7 @@ const newPlayerInQueue = (socket) => {
 
 const createGame = (player1Socket, player2Socket) => {
   const newGame = GameService.init.gameState();
+
   newGame['idGame'] = uniqid();
   newGame['player1Socket'] = player1Socket;
   newGame['player2Socket'] = player2Socket;
@@ -74,14 +86,27 @@ const createGame = (player1Socket, player2Socket) => {
 
   const gameIndex = GameService.utils.findGameIndexById(games, newGame.idGame);
 
-  games[gameIndex].player1Socket.emit('game.start', GameService.send.forPlayer.viewGameState('player:1', games[gameIndex]));
-  games[gameIndex].player2Socket.emit('game.start', GameService.send.forPlayer.viewGameState('player:2', games[gameIndex]));
+  const state1 = GameService.send.forPlayer.viewGameState('player:1', games[gameIndex]);
+  state1.playerKey = 'player:1';                          // ← sa clé
+  state1.botKey = 'player:2';                             // ← la clé du bot
+  state1.idPlayer = games[gameIndex].player1Socket.id;    // ← son socket.id
+  games[gameIndex].player1Socket.emit('game.start', state1);
+
+  // Pour le joueur 2 (le bot stub)
+  const state2 = GameService.send.forPlayer.viewGameState('player:2', games[gameIndex]);
+  state2.playerKey = 'player:2';                          // ← sa clé (BOT)
+  state2.botKey  = 'player:1';                            // ← la clé du vrai joueur
+  state2.idPlayer = games[gameIndex].player2Socket.id;    // ← "BOT"
+  games[gameIndex].player2Socket.emit('game.start', state2);
+
+  games[gameIndex].player2Socket.emit('game.start', state2);
   games[gameIndex].gameState.grid = GameService.grid.resetcanBeCheckedCells(games[gameIndex].gameState.grid);
 
   updateClientsViewScores(games[gameIndex])
   updateClientsViewTimers(games[gameIndex]);
   updateClientsViewDecks(games[gameIndex]);
   updateClientsViewGrid(games[gameIndex]);
+  updateClientsViewState(games[gameIndex]);
 
   const gameInterval = setInterval(() => {
     games[gameIndex].gameState.timer--;
@@ -101,24 +126,20 @@ const createGame = (player1Socket, player2Socket) => {
       updateClientsViewDecks(games[gameIndex]);
       updateClientsViewChoices(games[gameIndex]);
       updateClientsViewGrid(games[gameIndex])
+      updateClientsViewState(games[gameIndex]);
     }
 
     games[gameIndex].player1Socket.emit('game.timer', GameService.send.forPlayer.gameTimer('player:1', games[gameIndex].gameState));
     games[gameIndex].player2Socket.emit('game.timer', GameService.send.forPlayer.gameTimer('player:2', games[gameIndex].gameState));
   }, 1000);
 
-  player1Socket.on('disconnect', () => {
-    clearInterval(gameInterval);
-  });
-  player2Socket.on('disconnect', () => {
-    clearInterval(gameInterval);
-  });
+  games[gameIndex].gameInterval = gameInterval;
+
 };
 
 const leftQueue = (socket) => {
   queue.shift(socket);
   socket.emit('queue.left', GameService.send.forPlayer.viewQueueStateLeave());
-  console.log(`[${socket.id}] have left the queue `);
 }
 
 
@@ -142,6 +163,11 @@ io.on('connection', socket => {
     console.log(`[${socket.id}] socket disconnected - ${reason}`);
   });
 
+  socket.on("vs-bot.start", () => {
+    const botStub = { id: "BOT", emit: (e,d) => socket.emit(e,d) };
+    createGame(socket, botStub);
+  });
+
   socket.on('game.dices.roll', () => {
     const idx = GameService.utils.findGameIndexBySocketId(games, socket.id);
     const game = games[idx];
@@ -151,11 +177,12 @@ io.on('connection', socket => {
     if (deck.rollsCounter < deck.rollsMaximum - 1) {
       deck.dices = GameService.dices.roll(deck.dices);
       deck.rollsCounter += 1;
+      const isSec = deck.rollsCounter === 1
 
       let combos = GameService.choices.findCombinations(
         deck.dices,
         /* isDefi */ false,
-        /* isSec  */ false
+        /* isSec  */ isSec
       );
 
       if (deck.rollsCounter === 2 && combos.length === 0) {
@@ -167,6 +194,7 @@ io.on('connection', socket => {
       updateClientsViewDecks(game);
       updateClientsViewChoices(game);
       updateClientsViewTimers(game);
+      updateClientsViewState(game);
       return;
     }
 
@@ -200,6 +228,7 @@ io.on('connection', socket => {
     updateClientsViewDecks(game);
     updateClientsViewChoices(game);
     updateClientsViewTimers(game);
+    updateClientsViewState(game);
   });
 
   socket.on('game.dices.lock', (idDice) => {
@@ -218,6 +247,7 @@ io.on('connection', socket => {
 
     state.choices.idSelectedChoice = choiceId;
     state.choices.isChallenge = (choiceId === 'defi');
+    state.choices.isSec = (choiceId === 'sec')
     state.grid = GameService.grid.resetcanBeCheckedCells(state.grid);
     state.grid = GameService.grid.updateGridAfterSelectingChoice(
       choiceId,
@@ -227,6 +257,7 @@ io.on('connection', socket => {
 
     updateClientsViewChoices(game);
     updateClientsViewGrid(game);
+    updateClientsViewState(game);
   });
 
 
@@ -257,6 +288,7 @@ io.on('connection', socket => {
 
     updateClientsViewGrid(game);
     updateClientsViewScores(game);
+    updateClientsViewState(game);
 
     const totalPlaced = state.grid.flat().filter(c => c.owner === playerKey).length;
     if (win || totalPlaced >= 12) {
@@ -269,6 +301,7 @@ io.on('connection', socket => {
 
       game.player1Socket.emit('game.end', {player1Score: p1, player2Score: p2, winner});
       game.player2Socket.emit('game.end', {player1Score: p1, player2Score: p2, winner});
+      clearInterval(games[gameIndex].gameInterval);
       return;
     }
     state.currentTurn = playerKey === 'player:1' ? 'player:2' : 'player:1';
@@ -281,6 +314,7 @@ io.on('connection', socket => {
     updateClientsViewDecks(game);
     updateClientsViewChoices(game);
     updateClientsViewGrid(game);
+    updateClientsViewState(game);
   });
 });
 
