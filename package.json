@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"yarn start:frontend\" \"yarn start:backend\"",
+    "dev": "rimraf .expo && concurrently \"yarn start:frontend\" \"yarn start:backend\"",
     "start:frontend": "expo start --clear",
     "start:backend": "cd backend && yarn start",
     "build": "expo build",
@@ -31,6 +31,7 @@
     "@babel/core": "^7.19.3",
     "babel-plugin-module-resolver": "^5.0.2",
     "concurrently": "^9.1.2",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "rimraf": "^6.0.1"
   }
 }
