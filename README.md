@@ -45,4 +45,3 @@ Backend
 ```bash
 yarn start
 ```
-
