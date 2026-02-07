@@ -46,14 +46,3 @@ Backend
 yarn start
 ```
 
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
